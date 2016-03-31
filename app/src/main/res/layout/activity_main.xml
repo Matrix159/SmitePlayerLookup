@@ -7,6 +7,8 @@
     android:fitsSystemWindows="true"
     tools:context="edu.gvsu.cis.smiteplayerlookup.MainActivity">
 
+
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,16 +21,26 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <!--
+        * This will eventually be the Boom Button
+        * once we figure out how to get it in
+        -->
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/boom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="20dp"
+            app:boom_inActionBar="false"
+            app:boom_button_color="@color/colorPrimary"
+            app:boom_button_pressed_color="@color/colorPrimary"
+            />
+
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>
