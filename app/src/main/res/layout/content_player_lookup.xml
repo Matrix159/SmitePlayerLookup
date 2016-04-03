@@ -18,29 +18,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name"
         android:id="@+id/playername"
-        android:layout_below="@+id/editText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/button"
-        android:onClick="test"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -92,5 +71,17 @@
         android:layout_alignTop="@+id/textView2"
         android:layout_alignRight="@+id/lossesText"
         android:layout_alignEnd="@+id/lossesText" />
+
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
 
 </RelativeLayout>

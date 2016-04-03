@@ -26,12 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/edit_name"
-        android:layout_marginTop="69dp"
         android:hint="Enter player name"
         android:background="#902d2d"
         android:textColorHint="#ffffff"
         android:inputType="text"
-        android:layout_below="@+id/imageView"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -40,6 +39,5 @@
         android:text="Search"
         android:id="@+id/search_button"
         android:layout_below="@+id/edit_name"
-        android:layout_centerHorizontal="true"
-        android:onClick="lookupPlayer" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -34,36 +34,39 @@ public class PlayerLookupActivity extends AppCompatActivity{
     private BoomMenuButton boomButtonActionBar;
     private String[] Colors;
     private SmiteMaster master;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_lookup);
-
-        //String of colors for the boom menu.
-        // TODO: Add more that fit the pallet for each additional button We need
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         master = new SmiteMaster(this);
+        Intent intent = this.getIntent();
+        name = intent.getStringExtra("playerName");
 
+        new AsynchCaller().execute();
     }
 
     private class AsynchCaller extends AsyncTask<Void, Void, Void>
     {
         List<PlayerInfo> list;
-        TextView name = (TextView) findViewById(R.id.playername);
-        EditText editText = (EditText) findViewById(R.id.editText);
+        TextView nameTextView = (TextView) findViewById(R.id.playername);
         TextView wins = (TextView) findViewById(R.id.winText);
         TextView losses = (TextView) findViewById(R.id.lossesText);
         TextView clanName = (TextView) findViewById(R.id.clan_name);
-        String player = "";
+        String player = name;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            player = editText.getText().toString();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
+            while(master.getSessionId() == null)
+            {
+
+            }
             list = master.getPlayer(player);
 
 
@@ -73,22 +76,21 @@ public class PlayerLookupActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            name.setText(list.get(0).getName());
-            wins.setText(String.valueOf(list.get(0).getWins()));
-            losses.setText(String.valueOf(list.get(0).getLosses()));
-            clanName.setText(String.valueOf(list.get(0).getTeam_Name()));
+            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+            if(list.size() == 0)
+            {
+                finish();
+            }
+            else
+            {
+                nameTextView.setText(list.get(0).getName());
+                wins.setText(String.valueOf(list.get(0).getWins()));
+                losses.setText(String.valueOf(list.get(0).getLosses()));
+                clanName.setText(String.valueOf(list.get(0).getTeam_Name()));
+            }
         }
 
 
     }
-    public void test(View v)
-    {
-        new AsynchCaller().execute();
-
-
-    }
-
-
-
 
 }

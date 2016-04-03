@@ -3,6 +3,7 @@ package edu.gvsu.cis.smiteplayerlookup;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.firebase.client.Firebase;
@@ -22,11 +24,16 @@ import com.nightonke.boommenu.Types.ButtonType;
 import com.nightonke.boommenu.Types.PlaceType;
 import com.nightonke.boommenu.Util;
 
+import java.util.List;
+
+import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
+import edu.gvsu.cis.smitedataretrieval.playerinfo.PlayerInfo;
+
 public class MainActivity extends AppCompatActivity implements BoomMenuButton.OnSubButtonClickListener, BoomMenuButton.AnimatorListener {
 
     private BoomMenuButton boomButtonActionBar;
     private String[] Colors;
-
+    private EditText editPlayerName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,23 +53,17 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         mActionBar.setDisplayShowHomeEnabled(true);
         mActionBar.setDisplayShowTitleEnabled(false);
         LayoutInflater mInflater = LayoutInflater.from(this);
-
-
-
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setText(R.string.app_name);
-
-        //mCustomView.isInEditMode();
-
         boomButtonActionBar = (BoomMenuButton) mCustomView.findViewById(R.id.boom);
         boomButtonActionBar.setOnSubButtonClickListener(this);
         boomButtonActionBar.setAnimatorListener(this);
-
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
+        ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0, 0);
 
-        ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0,0);
+        editPlayerName = (EditText) findViewById(R.id.edit_name);
     }
 
     @Override
@@ -92,10 +93,10 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     public void onClick(int buttonIndex) {
         if(buttonIndex == 0)
         {
-            Intent intent = new Intent(this,  PlayerLookupActivity.class);
-            this.startActivity(intent);
+
         }
     }
+
 
 
     @Override
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         super.onWindowFocusChanged(hasFocus);
 
         //Array of strings for the boom button
-        String[] boomStrings = new String[]{"Player Lookup", "God Lookup", "Test Session"};
+        String[] boomStrings = new String[]{"Gods", "Test Session", "Placeholder"};
 
         //2D array of ints for the colors
         int[][] intColors = new int[3][2];
@@ -133,6 +134,12 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         );
     }
 
+    public void lookupPlayer(View v)
+    {
+        Intent intent = new Intent(this,  PlayerLookupActivity.class);
+        intent.putExtra("playerName", editPlayerName.getText().toString());
+        this.startActivity(intent);
+    }
     /********************************************************
      * Returns an int for the color in a string of colors
      * @param index of Colors
