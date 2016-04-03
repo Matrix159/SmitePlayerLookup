@@ -1,5 +1,6 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -87,7 +88,11 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
     @Override
     public void onClick(int buttonIndex) {
-
+        if(buttonIndex == 0)
+        {
+            Intent intent = new Intent(this,  PlayerLookupActivity.class);
+            this.startActivity(intent);
+        }
     }
 
 
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         super.onWindowFocusChanged(hasFocus);
 
         //Array of strings for the boom button
-        String[] boomStrings = new String[]{"Test", "God Lookup", "Player Finder"};
+        String[] boomStrings = new String[]{"Player Lookup", "God Lookup", "Test Session"};
 
         //2D array of ints for the colors
         int[][] intColors = new int[3][2];
