@@ -12,4 +12,13 @@
     tools:context="edu.gvsu.cis.smiteplayerlookup.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerLookupField"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="308dp"
+        android:inputType="text"
+        android:hint="@string/enter_a_smite_player_name" />
 </RelativeLayout>
