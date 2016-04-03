@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.firebase.client.Firebase;
@@ -45,9 +46,42 @@ public class PlayerLookupActivity extends AppCompatActivity{
 
     }
 
+    private class AsynchCaller extends AsyncTask<Void, Void, Void>
+    {
+        List<PlayerInfo> list;
+        TextView name = (TextView) findViewById(R.id.playername);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        TextView wins = (TextView) findViewById(R.id.winText);
+        TextView losses = (TextView) findViewById(R.id.lossesText);
+        String player = "";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            player = editText.getText().toString();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            list = master.getPlayer(player);
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            name.setText(list.get(0).getName());
+            wins.setText(String.valueOf(list.get(0).getWins()));
+            losses.setText(String.valueOf(list.get(0).getLosses()));
+        }
+
+
+    }
     public void test(View v)
     {
-
+        new AsynchCaller().execute();
 
 
     }
