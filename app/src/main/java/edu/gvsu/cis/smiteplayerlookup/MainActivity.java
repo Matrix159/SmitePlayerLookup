@@ -35,8 +35,9 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         Colors = new String[]{
                 "#b89500",  //Darker Golden color
                 "#ffce00",  //Yellow
-                "#0D5B80",  //Slightly dark blue
-                "16C3D9"    //Cyan Kind of color
+                "#16C3D9",    //Cyan Kind of color
+                "#0D5B80"  //Slightly dark blue
+
         };
 
         ActionBar mActionBar = getSupportActionBar();
