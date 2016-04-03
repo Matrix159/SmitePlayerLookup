@@ -53,6 +53,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         EditText editText = (EditText) findViewById(R.id.editText);
         TextView wins = (TextView) findViewById(R.id.winText);
         TextView losses = (TextView) findViewById(R.id.lossesText);
+        TextView clanName = (TextView) findViewById(R.id.clan_name);
         String player = "";
 
         @Override
@@ -75,6 +76,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
             name.setText(list.get(0).getName());
             wins.setText(String.valueOf(list.get(0).getWins()));
             losses.setText(String.valueOf(list.get(0).getLosses()));
+            clanName.setText(String.valueOf(list.get(0).getTeam_Name()));
         }
 
 
