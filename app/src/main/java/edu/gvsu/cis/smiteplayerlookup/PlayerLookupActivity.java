@@ -54,6 +54,8 @@ public class PlayerLookupActivity extends AppCompatActivity{
         TextView wins = (TextView) findViewById(R.id.winText);
         TextView losses = (TextView) findViewById(R.id.lossesText);
         TextView clanName = (TextView) findViewById(R.id.clan_name);
+        TextView createdText = (TextView) findViewById(R.id.created_text);
+        TextView loginText = (TextView) findViewById(R.id.login_text);
         String player = name;
 
         @Override
@@ -84,9 +86,11 @@ public class PlayerLookupActivity extends AppCompatActivity{
             else
             {
                 nameTextView.setText(list.get(0).getName());
+                clanName.setText(list.get(0).getTeam_Name());
+                createdText.setText("Created at: " + list.get(0).getCreated_Datetime());
+                loginText.setText("Last login: " + list.get(0).getLast_Login_Datetime());
                 wins.setText(String.valueOf(list.get(0).getWins()));
                 losses.setText(String.valueOf(list.get(0).getLosses()));
-                clanName.setText(String.valueOf(list.get(0).getTeam_Name()));
             }
         }
 

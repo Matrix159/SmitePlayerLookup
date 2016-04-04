@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.gvsu.cis.smiteplayerlookup.PlayerLookupActivity"
-    tools:showIn="@layout/activity_player_lookup">
+    tools:showIn="@layout/activity_player_lookup"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,27 +20,32 @@
         android:text="Name"
         android:id="@+id/playername"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Placeholder"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/winText"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/my_border"
+        android:textIsSelectable="false"
+        android:textColor="@color/text_color" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Placeholder"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/lossesText"
         android:layout_below="@+id/textView3"
         android:layout_alignRight="@+id/clan_name"
-        android:layout_alignEnd="@+id/clan_name" />
+        android:layout_alignEnd="@+id/clan_name"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,9 +53,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Clan"
         android:id="@+id/clan_name"
-        android:layout_alignTop="@+id/playername"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,8 +64,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Wins"
         android:id="@+id/textView2"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/playername"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color"
+        android:layout_below="@+id/created_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -70,18 +78,77 @@
         android:id="@+id/textView3"
         android:layout_alignTop="@+id/textView2"
         android:layout_alignRight="@+id/lossesText"
-        android:layout_alignEnd="@+id/lossesText" />
+        android:layout_alignEnd="@+id/lossesText"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color" />
 
     <RelativeLayout
         android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center" >
+        android:gravity="center"
+        android:visibility="gone">
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true" />
     </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conquest"
+        android:id="@+id/conquest_ranked_button"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duel"
+        android:id="@+id/duel_ranked_button"
+        android:layout_below="@+id/ranked_text"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Joust"
+        android:id="@+id/joust_ranked_button"
+        android:layout_below="@+id/ranked_text"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ranked Stats"
+        android:id="@+id/ranked_text"
+        android:layout_above="@+id/conquest_ranked_button"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/created_text"
+        android:layout_below="@+id/playername"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/login_text"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color"
+        android:layout_below="@+id/clan_name"
+        android:layout_alignRight="@+id/clan_name" />
 
 </RelativeLayout>
