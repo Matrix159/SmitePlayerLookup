@@ -6,34 +6,35 @@ import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<GodInfo> mDataset;
-
+    private ArrayList<Bitmap> mBitmaps;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public ImageView mTextView;
+        public ImageView mImageView;
         public ViewHolder(ImageView v) {
             super(v);
-            mTextView = v;
+            mImageView = v;
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<GodInfo> list) {
+    public MyAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps) {
         mDataset = list;
+        mBitmaps = bitmaps;
+
     }
 
     // Create new views (invoked by the layout manager)
@@ -54,8 +55,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        new DownloadImageTask(holder.mTextView).execute(mDataset.get(position).getGodIcon_URL());
-        //holder.mTextView.(mDataset.get(position).getName());
+
+        holder.mImageView.setImageBitmap(mBitmaps.get(position));
 
     }
 

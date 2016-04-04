@@ -1,22 +1,21 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
 import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
-import edu.gvsu.cis.smitedataretrieval.playerinfo.PlayerInfo;
 
 public class GodListActivity extends AppCompatActivity {
 
@@ -24,7 +23,8 @@ public class GodListActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SmiteMaster master;
-    private List<GodInfo> list;
+    private List<GodInfo> godList;
+    private ArrayList<Bitmap> godBitmaps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +40,10 @@ public class GodListActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         master = new SmiteMaster(this);
-        list = new ArrayList<>();
+        godList = new ArrayList<>();
+        godBitmaps = new ArrayList<>();
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(list);
+        mAdapter = new MyAdapter(godList, godBitmaps);
         mRecyclerView.setAdapter(mAdapter);
         new AsynchCaller().execute();
     }
@@ -64,8 +65,19 @@ public class GodListActivity extends AppCompatActivity {
 
             }
             List<GodInfo> godInfoList = master.getGods(1);
-            for(GodInfo x: godInfoList)
-            list.add(x);
+            for(GodInfo x: godInfoList) {
+                godList.add(x);
+                Bitmap mIcon;
+                try {
+                    InputStream in = new java.net.URL(x.getGodIcon_URL()).openStream();
+                    mIcon = BitmapFactory.decodeStream(in);
+                    godBitmaps.add(mIcon);
+                } catch (Exception e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
+
+            }
 
 
             return null;
@@ -78,10 +90,5 @@ public class GodListActivity extends AppCompatActivity {
             mAdapter.notifyDataSetChanged();
 
         }
-
-
     }
-
-
-
 }
