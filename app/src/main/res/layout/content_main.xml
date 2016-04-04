@@ -32,7 +32,8 @@
         android:textColorHint="#ffffff"
         android:inputType="text"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Scatmancon2" />
 
     <Button
         android:layout_width="wrap_content"

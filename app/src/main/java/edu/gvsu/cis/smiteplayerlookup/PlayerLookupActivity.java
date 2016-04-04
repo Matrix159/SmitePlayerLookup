@@ -88,7 +88,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
                 nameTextView.setText(list.get(0).getName());
 
                 //Checks if player is in clan or not
-                if(list.get(0).getTeam_Name()!= "") {
+                if(!list.get(0).getTeam_Name().equals("")) {
                     clanName.setText(list.get(0).getTeam_Name());
                 }else{
                     clanName.setText(R.string.no_clan);
