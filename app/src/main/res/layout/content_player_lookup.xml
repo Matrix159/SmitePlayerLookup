@@ -66,7 +66,7 @@
         android:id="@+id/textView2"
         android:background="@drawable/my_border"
         android:textColor="@color/text_color"
-        android:layout_below="@+id/playername"
+        android:layout_below="@+id/login_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -129,9 +129,11 @@
         android:id="@+id/ranked_text"
         android:background="@drawable/my_border"
         android:textColor="@color/text_color"
-        android:layout_above="@+id/duel_ranked_button"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="65dp" />
+        android:textColor="@color/text_color"
+        android:layout_marginTop="122dp"
+        android:layout_below="@+id/lossesText"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -154,5 +156,16 @@
         android:layout_below="@+id/created_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/player_status"
+        android:layout_below="@+id/winText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/text_color"
+        android:background="@drawable/my_border"/>
 
 </RelativeLayout>

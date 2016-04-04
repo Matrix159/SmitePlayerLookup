@@ -28,6 +28,7 @@ import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
 import edu.gvsu.cis.smitedataretrieval.playerinfo.PlayerInfo;
+import edu.gvsu.cis.smitedataretrieval.playerinfo.PlayerStatus;
 
 public class PlayerLookupActivity extends AppCompatActivity{
 
@@ -50,12 +51,14 @@ public class PlayerLookupActivity extends AppCompatActivity{
     private class AsynchCaller extends AsyncTask<Void, Void, Void>
     {
         List<PlayerInfo> list;
+        List<PlayerStatus> statusList;
         TextView nameTextView = (TextView) findViewById(R.id.playername);
         TextView wins = (TextView) findViewById(R.id.winText);
         TextView losses = (TextView) findViewById(R.id.lossesText);
         TextView clanName = (TextView) findViewById(R.id.clan_name);
         TextView createdText = (TextView) findViewById(R.id.created_text);
         TextView loginText = (TextView) findViewById(R.id.login_text);
+        TextView playerStatus = (TextView) findViewById(R.id.player_status);
         String player = name;
 
         @Override
@@ -70,6 +73,8 @@ public class PlayerLookupActivity extends AppCompatActivity{
 
             }
             list = master.getPlayer(player);
+            statusList = master.getPlayerStatus(player);
+
 
 
             return null;
@@ -91,13 +96,15 @@ public class PlayerLookupActivity extends AppCompatActivity{
                 if(!list.get(0).getTeam_Name().equals("")) {
                     clanName.setText(list.get(0).getTeam_Name());
                 }else{
-                    clanName.setText(R.string.no_clan);
+                    clanName.setVisibility(View.INVISIBLE);
                 }
 
                 createdText.setText("Created at: " + list.get(0).getCreated_Datetime());
                 loginText.setText("Last login: " + list.get(0).getLast_Login_Datetime());
                 wins.setText(String.valueOf(list.get(0).getWins()));
                 losses.setText(String.valueOf(list.get(0).getLosses()));
+                playerStatus.setText(statusList.get(0).getStatus_string());
+
             }
         }
 
