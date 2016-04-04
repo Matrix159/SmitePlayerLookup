@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     public void lookupPlayer(View v)
     {
         Intent intent = new Intent(this,  PlayerLookupActivity.class);
+        if(editPlayerName.getText().toString().isEmpty())
+            return;
         intent.putExtra("playerName", editPlayerName.getText().toString());
         this.startActivity(intent);
     }
