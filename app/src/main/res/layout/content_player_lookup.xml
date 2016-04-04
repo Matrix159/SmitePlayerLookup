@@ -100,8 +100,9 @@
         android:layout_height="wrap_content"
         android:text="Conquest"
         android:id="@+id/conquest_ranked_button"
+        android:layout_below="@+id/ranked_text"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -125,10 +126,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ranked Stats"
         android:id="@+id/ranked_text"
-        android:layout_above="@+id/conquest_ranked_button"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/my_border"
-        android:textColor="@color/text_color" />
+        android:textColor="@color/text_color"
+        android:layout_marginTop="122dp"
+        android:layout_below="@+id/lossesText"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -151,5 +153,16 @@
         android:layout_below="@+id/created_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/player_status"
+        android:layout_below="@+id/winText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/text_color"
+        android:background="@drawable/my_border"/>
 
 </RelativeLayout>
