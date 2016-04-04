@@ -86,7 +86,14 @@ public class PlayerLookupActivity extends AppCompatActivity{
             else
             {
                 nameTextView.setText(list.get(0).getName());
-                clanName.setText(list.get(0).getTeam_Name());
+
+                //Checks if player is in clan or not
+                if(list.get(0).getTeam_Name()!= "") {
+                    clanName.setText(list.get(0).getTeam_Name());
+                }else{
+                    clanName.setText(R.string.no_clan);
+                }
+
                 createdText.setText("Created at: " + list.get(0).getCreated_Datetime());
                 loginText.setText("Last login: " + list.get(0).getLast_Login_Datetime());
                 wins.setText(String.valueOf(list.get(0).getWins()));
