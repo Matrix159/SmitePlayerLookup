@@ -25,6 +25,7 @@ public class GodListActivity extends AppCompatActivity {
     private SmiteMaster master;
     private List<GodInfo> godList;
     private ArrayList<Bitmap> godBitmaps;
+    private ImageSaver imageSaver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,7 @@ public class GodListActivity extends AppCompatActivity {
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
+        imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(godList, godBitmaps);
         mRecyclerView.setAdapter(mAdapter);
@@ -64,14 +66,30 @@ public class GodListActivity extends AppCompatActivity {
             {
 
             }
+            boolean save = true;
             List<GodInfo> godInfoList = master.getGods(1);
+            if(imageSaver.setFileName(godInfoList.get(0).getName()).setDirectoryName("images").load() != null)
+            {
+                save = false;
+                System.out.println("Does this return true?");
+            }
             for(GodInfo x: godInfoList) {
                 godList.add(x);
                 Bitmap mIcon;
                 try {
-                    InputStream in = new java.net.URL(x.getGodIcon_URL()).openStream();
-                    mIcon = BitmapFactory.decodeStream(in);
-                    godBitmaps.add(mIcon);
+
+                    if(save)
+                    {
+                        InputStream in = new java.net.URL(x.getGodIcon_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName()).setDirectoryName("images").save(mIcon);
+                        godBitmaps.add(mIcon);
+                    }
+                    else
+                    {
+                        godBitmaps.add(imageSaver.setFileName(x.getName()).setDirectoryName("images").load());
+                    }
+
                 } catch (Exception e) {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();

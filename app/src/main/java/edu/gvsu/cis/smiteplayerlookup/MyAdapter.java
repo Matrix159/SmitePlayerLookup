@@ -6,8 +6,10 @@ import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -24,9 +26,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public ImageView mImageView;
-        public ViewHolder(ImageView v) {
+        public TextView mTextView;
+        public ViewHolder(View v) {
             super(v);
-            mImageView = v;
+            mImageView = (ImageView) v.findViewById(R.id.imageView2);
+            mTextView = (TextView) v.findViewById(R.id.god_name);
         }
     }
 
@@ -42,11 +46,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
         // create a new view
-        ImageView v =  (ImageView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.god_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
-        ViewHolder vh = new ViewHolder(v);
+        ViewHolder vh = new ViewHolder(view);
         return vh;
     }
 
@@ -57,6 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
 
         holder.mImageView.setImageBitmap(mBitmaps.get(position));
+        holder.mTextView.setText(mDataset.get(position).getName());
 
     }
 
