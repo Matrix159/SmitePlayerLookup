@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         super.onWindowFocusChanged(hasFocus);
 
         //Array of strings for the boom button
-        String[] boomStrings = new String[]{"Gods", "Test Session", "Placeholder"};
+        String[] boomStrings = new String[]{"Gods", "Items", "Placeholder"};
 
         //2D array of ints for the colors
         int[][] intColors = new int[3][2];

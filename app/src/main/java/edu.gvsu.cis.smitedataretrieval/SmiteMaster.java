@@ -89,7 +89,9 @@ public class SmiteMaster  {
 
     public List<GodInfo> getGods(int languageCode)
     {
+        System.out.println("http://api.smitegame.com/smiteapi.svc/getgodsJson/" + DEV_ID+"/" + createSignature("getgods")+"/" + sessionId+"/" + timestamp+"/" + 1);
         return service.getGods(DEV_ID, createSignature("getgods"), sessionId, timestamp, languageCode);
+
     }
 
     public List<ItemInfo> getItems(int languageCode)

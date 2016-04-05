@@ -4,12 +4,13 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    android:onClick="startGodActivity">
     <ImageView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/imageView2">
+        android:id="@+id/god_icon_list">
     </ImageView>
 
     <TextView
@@ -18,7 +19,7 @@
         android:layout_gravity="center_vertical"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/god_name"
+        android:id="@+id/god_name_list"
         android:textColor="@color/text_color"
         android:background="@drawable/my_border"
          />

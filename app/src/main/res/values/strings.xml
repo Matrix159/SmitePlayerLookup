@@ -4,4 +4,5 @@
     <string name="title_activity_player_lookup">Player Information</string>
     <string name="title_activity_god_list">Gods</string>
     <string name="no_clan">No affiliated clan</string>
+    <string name="title_activity_god">God</string>
 </resources>

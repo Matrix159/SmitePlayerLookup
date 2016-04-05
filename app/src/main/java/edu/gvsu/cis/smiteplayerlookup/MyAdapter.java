@@ -1,5 +1,7 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -20,25 +22,33 @@ import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<GodInfo> mDataset;
     private ArrayList<Bitmap> mBitmaps;
+    private static GodListActivity godListActivity;
+    private RecyclerView recyclerView;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // each data item is just a string in this case
         public ImageView mImageView;
         public TextView mTextView;
         public ViewHolder(View v) {
             super(v);
-            mImageView = (ImageView) v.findViewById(R.id.imageView2);
-            mTextView = (TextView) v.findViewById(R.id.god_name);
+            mImageView = (ImageView) v.findViewById(R.id.god_icon_list);
+            mTextView = (TextView) v.findViewById(R.id.god_name_list);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps) {
+    public MyAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps, GodListActivity x) {
         mDataset = list;
         mBitmaps = bitmaps;
-
+        godListActivity = x;
     }
 
     // Create new views (invoked by the layout manager)
@@ -59,7 +69,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-
         holder.mImageView.setImageBitmap(mBitmaps.get(position));
         holder.mTextView.setText(mDataset.get(position).getName());
 
