@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.gvsu.cis.smiteplayerlookup.GodActivity"
     tools:showIn="@layout/activity_god"
-    android:background="@color/background_color">
+    android:background="@drawable/better_background">
 
     <ImageView
         android:layout_width="60dp"
