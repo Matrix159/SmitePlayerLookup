@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         //Empty right now until we decide if we want pictures or not
         Drawable[] boomDrawables = new Drawable[3];
 
-
+        boomButtonActionBar.setDuration(200);
         boomButtonActionBar.init(
                 boomDrawables,      // Array of Drawables
                 boomStrings,        // Array of Strings for buttons, ok to be null.
