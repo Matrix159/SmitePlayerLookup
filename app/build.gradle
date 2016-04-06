@@ -33,5 +33,4 @@ dependencies {
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'junit:junit:4.12'
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }
