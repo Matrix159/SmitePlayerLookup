@@ -3,6 +3,7 @@ package edu.gvsu.cis.smiteplayerlookup;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -143,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
             return;
         intent.putExtra("playerName", editPlayerName.getText().toString());
         this.startActivity(intent);
+
     }
     /********************************************************
      * Returns an int for the color in a string of colors
