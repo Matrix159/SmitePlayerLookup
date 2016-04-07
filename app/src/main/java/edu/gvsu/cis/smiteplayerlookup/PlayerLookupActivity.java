@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.nightonke.boommenu.BoomMenuButton;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
@@ -21,6 +23,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
     private String[] Colors;
     private SmiteMaster master;
     private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,9 @@ public class PlayerLookupActivity extends AppCompatActivity{
         TextView createdText = (TextView) findViewById(R.id.created_text);
         TextView loginText = (TextView) findViewById(R.id.login_text);
         TextView playerStatus = (TextView) findViewById(R.id.player_status_value);
+        TextView level = (TextView) findViewById(R.id.level_value);
+        TextView masteryLevel = (TextView) findViewById(R.id.mastery_level_value);
+        TextView leaves = (TextView) findViewById(R.id.leaves_value);
         String player = name;
 
         @Override
@@ -89,6 +95,9 @@ public class PlayerLookupActivity extends AppCompatActivity{
                 wins.setText(String.valueOf(list.get(0).getWins()));
                 losses.setText(String.valueOf(list.get(0).getLosses()));
                 playerStatus.setText(statusList.get(0).getStatus_string());
+                level.setText(String.valueOf(list.get(0).getLevel()));
+                masteryLevel.setText(String.valueOf(list.get(0).getMasteryLevel()));
+                leaves.setText(String.valueOf(list.get(0).getLeaves()));
 
             }
         }

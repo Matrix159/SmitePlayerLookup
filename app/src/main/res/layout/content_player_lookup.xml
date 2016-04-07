@@ -71,9 +71,8 @@
             android:id="@+id/win_text"
             android:background="@drawable/my_border"
             android:textColor="@color/text_color"
-            android:layout_below="@+id/login_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_below="@+id/leaves_text"
+            android:layout_alignParentLeft="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +82,7 @@
             android:id="@+id/loss_text"
             android:background="@drawable/my_border"
             android:textColor="@color/text_color"
-            android:layout_below="@+id/win_text"
+            android:layout_below="@+id/win_text_value"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -179,6 +178,72 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textColor="@color/text_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Level:"
+            android:id="@+id/level_text"
+            android:layout_below="@+id/login_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/text_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/level_value"
+            android:layout_alignTop="@+id/level_text"
+            android:layout_toRightOf="@+id/level_text"
+            android:layout_toEndOf="@+id/level_text"
+            android:textColor="@color/text_color"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Leaves:"
+            android:id="@+id/leaves_text"
+            android:textColor="@color/text_color"
+            android:layout_below="@+id/mastery_level_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/leaves_value"
+            android:layout_alignTop="@+id/leaves_text"
+            android:layout_toRightOf="@+id/leaves_text"
+            android:layout_toEndOf="@+id/leaves_text"
+            android:textColor="@color/text_color"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Mastery Level:"
+            android:id="@+id/mastery_level_text"
+            android:textColor="@color/text_color"
+            android:layout_below="@+id/level_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/mastery_level_value"
+            android:layout_alignTop="@+id/mastery_level_text"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/mastery_level_text"
+            android:textColor="@color/text_color"
+            android:layout_marginLeft="5dp" />
 
 </RelativeLayout>
 </ScrollView>

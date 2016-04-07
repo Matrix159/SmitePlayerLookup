@@ -117,6 +117,7 @@ public class SmiteMaster  {
 
     public List<PlayerStatus> getPlayerStatus(String player)
     {
+        System.out.println("http://api.smitegame.com/smiteapi.svc/getplayerstatusJson/" + DEV_ID+"/" + createSignature("getplayerstatus")+"/" + sessionId+"/" + timestamp+"/" + player);
         return service.getPlayerStatus(DEV_ID, createSignature("getplayerstatus"), sessionId, timestamp, player);
     }
 
