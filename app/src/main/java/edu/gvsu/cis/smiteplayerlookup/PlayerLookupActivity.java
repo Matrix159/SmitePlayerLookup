@@ -1,28 +1,13 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.firebase.client.Firebase;
 import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.Types.BoomType;
-import com.nightonke.boommenu.Types.ButtonType;
-import com.nightonke.boommenu.Types.PlaceType;
-import com.nightonke.boommenu.Util;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -53,12 +38,12 @@ public class PlayerLookupActivity extends AppCompatActivity{
         List<PlayerInfo> list;
         List<PlayerStatus> statusList;
         TextView nameTextView = (TextView) findViewById(R.id.playername);
-        TextView wins = (TextView) findViewById(R.id.winText);
-        TextView losses = (TextView) findViewById(R.id.lossesText);
+        TextView wins = (TextView) findViewById(R.id.win_text_value);
+        TextView losses = (TextView) findViewById(R.id.loss_text_value);
         TextView clanName = (TextView) findViewById(R.id.clan_name);
         TextView createdText = (TextView) findViewById(R.id.created_text);
         TextView loginText = (TextView) findViewById(R.id.login_text);
-        TextView playerStatus = (TextView) findViewById(R.id.player_status);
+        TextView playerStatus = (TextView) findViewById(R.id.player_status_value);
         String player = name;
 
         @Override

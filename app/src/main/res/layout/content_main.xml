@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.gvsu.cis.smiteplayerlookup.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="@color/background_color">
+    android:background="@drawable/better_background">
 
     <ImageView
         android:layout_width="match_parent"
@@ -28,11 +28,12 @@
         android:id="@+id/edit_name"
         android:layout_marginTop="69dp"
         android:hint="Enter player name"
-        android:background="@color/colorAccent"
         android:textColorHint="#ffffff"
         android:inputType="text"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/my_border"
+        android:textColor="@color/text_color" />
 
     <Button
         android:layout_width="wrap_content"

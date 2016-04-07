@@ -33,24 +33,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/winText"
-            android:layout_below="@+id/win_text"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:id="@+id/win_text_value"
             android:background="@drawable/my_border"
             android:textIsSelectable="false"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:layout_alignTop="@+id/win_text"
+            android:layout_toRightOf="@+id/win_text"
+            android:layout_toEndOf="@+id/win_text" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/lossesText"
-            android:layout_below="@+id/loss_text"
-            android:layout_alignRight="@+id/clan_name"
-            android:layout_alignEnd="@+id/clan_name"
+            android:id="@+id/loss_text_value"
             android:background="@drawable/my_border"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:layout_toRightOf="@+id/loss_text"
+            android:layout_alignTop="@+id/loss_text" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,8 +59,9 @@
             android:id="@+id/clan_name"
             android:background="@drawable/my_border"
             android:textColor="@color/text_color"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true" />
+            android:layout_below="@+id/playername"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,11 +81,11 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Losses"
             android:id="@+id/loss_text"
-            android:layout_alignTop="@+id/win_text"
-            android:layout_alignRight="@+id/lossesText"
-            android:layout_alignEnd="@+id/lossesText"
             android:background="@drawable/my_border"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:layout_below="@+id/win_text"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <RelativeLayout
             android:id="@+id/loadingPanel"
@@ -133,20 +133,20 @@
             android:id="@+id/ranked_text"
             android:background="@drawable/my_border"
             android:textColor="@color/text_color"
-            android:layout_marginTop="122dp"
-            android:layout_below="@+id/lossesText"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/player_status_value"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/created_text"
-            android:layout_below="@+id/playername"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:background="@drawable/my_border"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            android:layout_below="@+id/clan_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -163,12 +163,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/player_status_value"
+            android:textColor="@color/text_color"
+            android:layout_alignTop="@+id/player_status"
+            android:layout_toRightOf="@+id/player_status"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Status:"
             android:id="@+id/player_status"
-            android:layout_below="@+id/winText"
+            android:layout_below="@+id/loss_text_value"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="@color/text_color"
-            android:background="@drawable/my_border"/>
+            android:textColor="@color/text_color" />
 
 </RelativeLayout>
 </ScrollView>
