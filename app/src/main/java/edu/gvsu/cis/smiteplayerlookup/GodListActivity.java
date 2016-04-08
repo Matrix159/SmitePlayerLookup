@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class GodListActivity extends AppCompatActivity {
     private SmiteMaster master;
     private List<GodInfo> godList;
     private ArrayList<Bitmap> godBitmaps;
+    private ArrayList<Bitmap> abilityBitmaps;
     private ImageSaver imageSaver;
 
 
@@ -49,6 +51,7 @@ public class GodListActivity extends AppCompatActivity {
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
+        abilityBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(godList, godBitmaps, this);
@@ -82,20 +85,75 @@ public class GodListActivity extends AppCompatActivity {
             for (GodInfo x : godInfoList) {
                 godList.add(x);
                 Bitmap mIcon;
+                InputStream in = null;
                 try {
-
                     if (save) {
-                        InputStream in = new URL(x.getGodIcon_URL()).openStream();
+                        in = new URL(x.getGodIcon_URL()).openStream();
                         mIcon = BitmapFactory.decodeStream(in);
                         imageSaver.setFileName(x.getName()).setDirectoryName("images").save(mIcon);
                         godBitmaps.add(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility1_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability1").setDirectoryName("images").save(mIcon);
+                        abilityBitmaps.add(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility2_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability2").setDirectoryName("images").save(mIcon);
+                        abilityBitmaps.add(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility3_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability3").setDirectoryName("images").save(mIcon);
+                        abilityBitmaps.add(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility4_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability4").setDirectoryName("images").save(mIcon);
+                        abilityBitmaps.add(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility5_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability5").setDirectoryName("images").save(mIcon);
+                        abilityBitmaps.add(mIcon);
+                        in.close();
+
                     } else {
                         godBitmaps.add(imageSaver.setFileName(x.getName()).setDirectoryName("images").load());
+
+                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability1").setDirectoryName("images").load());
+
+                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability2").setDirectoryName("images").load());
+
+                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability3").setDirectoryName("images").load());
+
+                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability4").setDirectoryName("images").load());
+
+                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability5").setDirectoryName("images").load());
                     }
 
                 } catch (Exception e) {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
+                }
+                finally
+                {
+                    try
+                    {
+                        if(in != null)
+                            in.close();
+                    }
+                    catch(IOException ex)
+                    {
+                        ex.printStackTrace();
+                    }
+
                 }
 
             }

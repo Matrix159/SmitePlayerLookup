@@ -1,34 +1,25 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
+import android.animation.Animator;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 public class GodActivity extends AppCompatActivity {
 
     private ImageSaver imageSaver;
-    private ImageView imageView, statsImage, ability1Image;
+    private ImageView godImage, statsImage, abilityPassiveImage, ability1Image, ability2Image, ability3Image, ability4Image;
     private TextView godName, race, role;
     private Button wikiButton;
     private Intent intent;
-    private RelativeLayout statsLayout, innerStatsLayout, ability1Layout, innerAbility1Layout;
+    private RelativeLayout statsLayout, innerStatsLayout, abilityPassiveLayout, innerAbilityPassiveLayout, ability1Layout, innerAbility1Layout,
+            ability2Layout, innerAbility2Layout, ability3Layout, innerAbility3Layout, ability4Layout, innerAbility4Layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +33,24 @@ public class GodActivity extends AppCompatActivity {
         wikiButton = (Button) findViewById(R.id.wiki_button);
         statsLayout = (RelativeLayout) findViewById(R.id.stats_layout);
         innerStatsLayout = (RelativeLayout) findViewById(R.id.inner_stats_layout);
+        abilityPassiveLayout = (RelativeLayout) findViewById(R.id.ability_passive_layout);
+        innerAbilityPassiveLayout = (RelativeLayout) findViewById(R.id.inner_ability_passive_layout);
         ability1Layout = (RelativeLayout) findViewById(R.id.ability1_layout);
         innerAbility1Layout = (RelativeLayout) findViewById(R.id.inner_ability1_layout);
         godName.setText(" " + intent.getStringExtra("godName"));
         race.setText(" " + intent.getStringExtra("pantheon") + ": " + intent.getStringExtra("title"));
         role.setText(intent.getStringExtra("role") + " " + "(" + intent.getStringExtra("type") + " )");
         imageSaver = new ImageSaver(this);
-        imageView = (ImageView) findViewById(R.id.god_icon);
+        godImage = (ImageView) findViewById(R.id.god_icon);
         statsImage = (ImageView) findViewById(R.id.stats_image);
         ability1Image = (ImageView) findViewById(R.id.ability1_image);
-        imageView.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName")).setDirectoryName("images").load());
-        statsImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName")).setDirectoryName("images").load());
-        ability1Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName")).setDirectoryName("images").load());
+        godImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName")).setDirectoryName("images").load());
+        statsImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability1").setDirectoryName("images").load());
+//        abilityPassiveImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability5").setDirectoryName("images").load());
+        ability1Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability1").setDirectoryName("images").load());
+        //ability2Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability2").setDirectoryName("images").load());
+        //ability3Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability3").setDirectoryName("images").load());
+       // ability4Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability4").setDirectoryName("images").load());
     }
 
 
@@ -72,10 +69,56 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerStatsLayout.getVisibility() == View.VISIBLE)
             {
-                innerStatsLayout.setVisibility(View.GONE);
+                innerStatsLayout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        innerStatsLayout.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+
             }
             else
+            {
                 innerStatsLayout.setVisibility(View.VISIBLE);
+                innerStatsLayout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+
+            }
+
         }
         if(v.equals(ability1Layout))
         {

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,8 +13,10 @@
     tools:context="edu.gvsu.cis.smiteplayerlookup.GodActivity"
     tools:showIn="@layout/activity_god"
     android:background="@drawable/better_background"
-    android:id="@+id/top_god_layout">
-<RelativeLayout android:layout_height="wrap_content"
+    android:id="@+id/top_god_layout"
+    android:animateLayoutChanges="true">
+
+    <RelativeLayout android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:id="@+id/intro_god_layout">
 
@@ -107,8 +114,38 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ability1_layout"
+        android:id="@+id/ability_passive_layout"
         android:layout_below="@+id/stats_layout"
+        android:onClick="hide"
+       >
+
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:id="@+id/ability_passive_image" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inner_ability_passive_layout"
+            android:layout_below="@+id/ability_passive_image"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView4"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ability1_layout"
+        android:layout_below="@+id/ability_passive_layout"
         android:onClick="hide">
 
         <ImageView
@@ -129,10 +166,96 @@
                 android:text="Small Text"
                 android:id="@+id/ability1_text"
                 android:textColor="@color/text_color" />
+
         </RelativeLayout>
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/abillity2_layout"
+        android:layout_below="@+id/ability1_layout"
+        android:onClick="hide" >
+
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:id="@+id/ability2_image" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inner_ability2_layout"
+            android:layout_below="@+id/ability2_image" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ability3_layout"
+        android:layout_below="@+id/abillity2_layout"
+        android:onClick="hide" >
+
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:id="@+id/ability3_image" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inner_ability3_layout"
+            android:layout_below="@+id/ability3_image" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView2"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ability4_layout"
+        android:layout_below="@+id/ability3_layout"
+        android:onClick="hide" >
+
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:id="@+id/ability4_image" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inner_ability4_layout"
+            android:layout_below="@+id/ability4_image" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/textView3"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>
+
+</ScrollView>
