@@ -1,7 +1,5 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -19,7 +17,7 @@ import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHolder> {
     private List<GodInfo> mDataset;
     private ArrayList<Bitmap> mBitmaps;
     private static GodListActivity godListActivity;
@@ -45,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps, GodListActivity x) {
+    public GodListAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps, GodListActivity x) {
         mDataset = list;
         mBitmaps = bitmaps;
         godListActivity = x;
@@ -53,8 +51,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public GodListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                        int viewType) {
         // create a new view
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.god_view, parent, false);
@@ -71,6 +69,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         holder.mImageView.setImageBitmap(mBitmaps.get(position));
         holder.mTextView.setText(mDataset.get(position).getName());
+        System.out.println(mDataset.get(position).getName());
 
     }
 

@@ -1,33 +1,38 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.firebase.client.Firebase;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.Types.BoomType;
 import com.nightonke.boommenu.Types.ButtonType;
 import com.nightonke.boommenu.Types.PlaceType;
 import com.nightonke.boommenu.Util;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
+import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
 import edu.gvsu.cis.smitedataretrieval.playerinfo.PlayerInfo;
 
 public class MainActivity extends AppCompatActivity implements BoomMenuButton.OnSubButtonClickListener, BoomMenuButton.AnimatorListener {
@@ -35,12 +40,16 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     private BoomMenuButton boomButtonActionBar;
     private String[] Colors;
     private EditText editPlayerName;
+    private ImageSaver imageSaver;
+    private SmiteMaster master;
+    private RelativeLayout loading_panel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
+        loading_panel = (RelativeLayout) findViewById(R.id.main_loading_panel);
         //String of colors for the boom menu.
         // TODO: Add more that fit the pallet for each additional button We need
         Colors = new String[]{
@@ -66,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0, 0);
 
         editPlayerName = (EditText) findViewById(R.id.edit_name);
+        imageSaver = new ImageSaver(this);
+        master = new SmiteMaster(this);
     }
 
     @Override
@@ -84,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            loading_panel.setVisibility(View.VISIBLE);
+            new AsynchCaller().execute();
             return true;
         }
 
@@ -186,4 +199,87 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
     }
 
+    private class AsynchCaller extends AsyncTask<Void, Void, Void> {
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            while (master.getSessionId() == null) {
+
+            }
+            List<GodInfo> godInfoList = master.getGods(1);
+            for (GodInfo x : godInfoList) {
+                Bitmap mIcon;
+                InputStream in = null;
+                if(x.getName().equals("Ravana"))
+                {
+                    System.out.println(x.getGodAbility1_URL());
+                    System.out.println(x.getGodAbility2_URL());
+                    System.out.println(x.getGodAbility3_URL());
+                    System.out.println(x.getGodAbility4_URL());
+                    System.out.println(x.getGodAbility5_URL());
+                }
+                try {
+                        System.out.println(x.getName());
+                        in = new URL(x.getGodIcon_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName()).setDirectoryName("images").save(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility1_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability1").setDirectoryName("images").save(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility2_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability2").setDirectoryName("images").save(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility3_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability3").setDirectoryName("images").save(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility4_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability4").setDirectoryName("images").save(mIcon);
+                        in.close();
+
+                        in = new URL(x.getGodAbility5_URL()).openStream();
+                        mIcon = BitmapFactory.decodeStream(in);
+                        imageSaver.setFileName(x.getName() + "ability5").setDirectoryName("images").save(mIcon);
+                        in.close();
+
+                } catch (Exception e) {
+                    Log.e("Error", e.getMessage());
+                    e.printStackTrace();
+                }
+                finally
+                {
+                    try
+                    {
+                        if(in != null)
+                            in.close();
+                    }
+                    catch(IOException ex)
+                    {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            loading_panel.setVisibility(View.GONE);
+        }
+    }
 }

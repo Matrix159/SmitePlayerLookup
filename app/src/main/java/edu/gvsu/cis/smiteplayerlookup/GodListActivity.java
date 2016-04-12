@@ -3,7 +3,6 @@ package edu.gvsu.cis.smiteplayerlookup;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -54,7 +53,7 @@ public class GodListActivity extends AppCompatActivity {
         abilityBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(godList, godBitmaps, this);
+        mAdapter = new GodListAdapter(godList, godBitmaps, this);
         mRecyclerView.setAdapter(mAdapter);
         new AsynchCaller().execute();
     }
@@ -86,8 +85,17 @@ public class GodListActivity extends AppCompatActivity {
                 godList.add(x);
                 Bitmap mIcon;
                 InputStream in = null;
+                if(x.getName().equals("Ravana"))
+                {
+                    System.out.println(x.getGodAbility1_URL());
+                    System.out.println(x.getGodAbility2_URL());
+                    System.out.println(x.getGodAbility3_URL());
+                    System.out.println(x.getGodAbility4_URL());
+                    System.out.println(x.getGodAbility5_URL());
+                }
                 try {
                     if (save) {
+                        System.out.println(x.getName());
                         in = new URL(x.getGodIcon_URL()).openStream();
                         mIcon = BitmapFactory.decodeStream(in);
                         imageSaver.setFileName(x.getName()).setDirectoryName("images").save(mIcon);
