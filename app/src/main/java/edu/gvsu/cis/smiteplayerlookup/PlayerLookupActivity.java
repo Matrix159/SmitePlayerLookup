@@ -74,7 +74,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+            findViewById(R.id.player_lookup_loading_panel).setVisibility(View.GONE);
             if(list.size() == 0)
             {
                 finish();

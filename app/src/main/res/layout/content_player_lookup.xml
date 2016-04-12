@@ -87,11 +87,11 @@
             android:layout_alignParentStart="true" />
 
         <RelativeLayout
-            android:id="@+id/loadingPanel"
+            android:id="@+id/player_lookup_loading_panel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <ProgressBar
                 android:layout_width="wrap_content"

@@ -96,17 +96,9 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Stats text"
-                android:id="@+id/firstStatsText"
+                android:id="@+id/stats_text"
                 android:textColor="@color/text_color" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Svvegegegggggggggggggggggggggggg\nggggggggggggggggg"
-                android:id="@+id/svvegText"
-                android:textColor="@color/text_color"
-                android:layout_below="@+id/firstStatsText" />
         </RelativeLayout>
 
     </RelativeLayout>
@@ -136,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/textView4"
+                android:id="@+id/passive_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
     </RelativeLayout>
@@ -194,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/textView"
+                android:id="@+id/ability2_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
     </RelativeLayout>
@@ -222,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/textView2"
+                android:id="@+id/ability3_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
     </RelativeLayout>
@@ -250,7 +242,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Small Text"
-                android:id="@+id/textView3"
+                android:id="@+id/ability4_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
     </RelativeLayout>

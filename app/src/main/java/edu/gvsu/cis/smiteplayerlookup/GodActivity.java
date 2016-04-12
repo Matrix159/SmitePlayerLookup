@@ -11,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class GodActivity extends AppCompatActivity {
 
     private ImageSaver imageSaver;
     private ImageView godImage, statsImage, abilityPassiveImage, ability1Image, ability2Image, ability3Image, ability4Image;
-    private TextView godName, race, role;
+    private TextView godName, race, role, statsText, abilityPassiveText, ability1Text, ability2Text, ability3Text, ability4Text;
     private Button wikiButton;
     private Intent intent;
     private RelativeLayout statsLayout, innerStatsLayout, abilityPassiveLayout, innerAbilityPassiveLayout, ability1Layout, innerAbility1Layout,
@@ -37,20 +39,38 @@ public class GodActivity extends AppCompatActivity {
         innerAbilityPassiveLayout = (RelativeLayout) findViewById(R.id.inner_ability_passive_layout);
         ability1Layout = (RelativeLayout) findViewById(R.id.ability1_layout);
         innerAbility1Layout = (RelativeLayout) findViewById(R.id.inner_ability1_layout);
+        ability2Layout = (RelativeLayout) findViewById(R.id.abillity2_layout);
+        innerAbility2Layout = (RelativeLayout) findViewById(R.id.inner_ability2_layout);
+        ability3Layout = (RelativeLayout) findViewById(R.id.ability3_layout);
+        innerAbility3Layout = (RelativeLayout) findViewById(R.id.inner_ability3_layout);
+        ability4Layout = (RelativeLayout) findViewById(R.id.ability4_layout);
+        innerAbility4Layout = (RelativeLayout) findViewById(R.id.inner_ability4_layout);
+        statsText = (TextView) findViewById(R.id.stats_text);
+        abilityPassiveText = (TextView) findViewById(R.id.passive_text);
+        ability1Text = (TextView) findViewById(R.id.ability1_text);
+        ability2Text = (TextView) findViewById(R.id.ability2_text);
+        ability3Text = (TextView) findViewById(R.id.ability3_text);
+        ability4Text = (TextView) findViewById(R.id.ability4_text);
+        statsText.setText("To be filled");
+        abilityPassiveText.setText("");
         godName.setText(" " + intent.getStringExtra("godName"));
         race.setText(" " + intent.getStringExtra("pantheon") + ": " + intent.getStringExtra("title"));
         role.setText(intent.getStringExtra("role") + " " + "(" + intent.getStringExtra("type") + " )");
         imageSaver = new ImageSaver(this);
         godImage = (ImageView) findViewById(R.id.god_icon);
         statsImage = (ImageView) findViewById(R.id.stats_image);
+        abilityPassiveImage = (ImageView) findViewById(R.id.ability_passive_image);
         ability1Image = (ImageView) findViewById(R.id.ability1_image);
+        ability2Image = (ImageView) findViewById(R.id.ability2_image);
+        ability3Image = (ImageView) findViewById(R.id.ability3_image);
+        ability4Image = (ImageView) findViewById(R.id.ability4_image);
         godImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName")).setDirectoryName("images").load());
         statsImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability1").setDirectoryName("images").load());
-//        abilityPassiveImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability5").setDirectoryName("images").load());
+        abilityPassiveImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability5").setDirectoryName("images").load());
         ability1Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability1").setDirectoryName("images").load());
-        //ability2Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability2").setDirectoryName("images").load());
-        //ability3Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability3").setDirectoryName("images").load());
-       // ability4Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability4").setDirectoryName("images").load());
+        ability2Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability2").setDirectoryName("images").load());
+        ability3Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability3").setDirectoryName("images").load());
+        ability4Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godName") + "ability4").setDirectoryName("images").load());
     }
 
 
