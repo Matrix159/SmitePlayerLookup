@@ -131,6 +131,18 @@
                 android:id="@+id/passive_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/abilitypassive_header_text"
+            android:textColor="@color/text_color"
+            android:text="Passive:"
+            android:singleLine="false"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ability_passive_image"
+            android:layout_toEndOf="@+id/ability_passive_image" />
     </RelativeLayout>
 
     <RelativeLayout

@@ -2,7 +2,7 @@
 package edu.gvsu.cis.smitedataretrieval.godinfo;
 
 
-public class GodInfo {
+public class GodInfo{
 
     private String Ability1;
     private String Ability2;

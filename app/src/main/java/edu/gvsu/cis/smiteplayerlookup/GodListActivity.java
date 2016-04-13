@@ -27,17 +27,18 @@ public class GodListActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SmiteMaster master;
-    private List<GodInfo> godList;
+    protected static List<GodInfo> godList;
     private ArrayList<Bitmap> godBitmaps;
     private ArrayList<Bitmap> abilityBitmaps;
     private ImageSaver imageSaver;
-
+    private GodListActivity thisActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_god_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        thisActivity = this;
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -75,77 +76,101 @@ public class GodListActivity extends AppCompatActivity {
             while (master.getSessionId() == null) {
 
             }
-            boolean save = true;
             List<GodInfo> godInfoList = master.getGods(1);
-            if (imageSaver.setFileName(godInfoList.get(0).getName()).setDirectoryName("images").load() != null) {
-                save = false;
-                System.out.println("Does this return true?");
-            }
+
             for (GodInfo x : godInfoList) {
                 godList.add(x);
                 Bitmap mIcon;
                 InputStream in = null;
-                if(x.getName().equals("Ravana"))
+                try
                 {
-                    System.out.println(x.getGodAbility1_URL());
-                    System.out.println(x.getGodAbility2_URL());
-                    System.out.println(x.getGodAbility3_URL());
-                    System.out.println(x.getGodAbility4_URL());
-                    System.out.println(x.getGodAbility5_URL());
-                }
-                try {
-                    if (save) {
                         System.out.println(x.getName());
-                        in = new URL(x.getGodIcon_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName()).setDirectoryName("images").save(mIcon);
-                        godBitmaps.add(mIcon);
-                        in.close();
 
-                        in = new URL(x.getGodAbility1_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability1").setDirectoryName("images").save(mIcon);
-                        abilityBitmaps.add(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility2_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability2").setDirectoryName("images").save(mIcon);
-                        abilityBitmaps.add(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility3_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability3").setDirectoryName("images").save(mIcon);
-                        abilityBitmaps.add(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility4_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability4").setDirectoryName("images").save(mIcon);
-                        abilityBitmaps.add(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility5_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability5").setDirectoryName("images").save(mIcon);
-                        abilityBitmaps.add(mIcon);
-                        in.close();
-
-                    } else {
-                        godBitmaps.add(imageSaver.setFileName(x.getName()).setDirectoryName("images").load());
-
-                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability1").setDirectoryName("images").load());
-
-                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability2").setDirectoryName("images").load());
-
-                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability3").setDirectoryName("images").load());
-
-                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability4").setDirectoryName("images").load());
-
-                        abilityBitmaps.add(imageSaver.setFileName(x.getName() + "ability5").setDirectoryName("images").load());
+                    try {
+                        if (imageSaver.setFileName(String.valueOf(x.getId())).setDirectoryName("images").load() != null)
+                            godBitmaps.add(imageSaver.setFileName(String.valueOf(x.getId())).setDirectoryName("images").load());
+                        else {
+                            in = new URL(x.getGodIcon_URL()).openStream();
+                            mIcon = BitmapFactory.decodeStream(in);
+                            imageSaver.setFileName(String.valueOf(x.getId())).setDirectoryName("images").save(mIcon);
+                            godBitmaps.add(mIcon);
+                            in.close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.printStackTrace();
+                        godBitmaps.add(BitmapFactory.decodeResource(thisActivity.getResources(),
+                                R.drawable.placeholder));
                     }
 
+                    try {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId1())).setDirectoryName("images").load() == null) {
+                            in = new URL(x.getGodAbility1_URL()).openStream();
+                            mIcon = BitmapFactory.decodeStream(in);
+                            imageSaver.setFileName(String.valueOf(x.getAbilityId1())).setDirectoryName("images").save(mIcon);
+                            in.close();
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
+
+
+                    try {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId2())).setDirectoryName("images").load() == null) {
+                            in = new URL(x.getGodAbility2_URL()).openStream();
+                            mIcon = BitmapFactory.decodeStream(in);
+                            imageSaver.setFileName(String.valueOf(x.getAbilityId2())).setDirectoryName("images").save(mIcon);
+                            in.close();
+                        }
+
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
+
+                    try {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId3())).setDirectoryName("images").load() == null) {
+                            in = new URL(x.getGodAbility3_URL()).openStream();
+                            mIcon = BitmapFactory.decodeStream(in);
+                            imageSaver.setFileName(String.valueOf(x.getAbilityId3())).setDirectoryName("images").save(mIcon);
+                            in.close();
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
+
+                    try {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId4())).setDirectoryName("images").load() == null) {
+                            in = new URL(x.getGodAbility4_URL()).openStream();
+                            mIcon = BitmapFactory.decodeStream(in);
+                            imageSaver.setFileName(String.valueOf(x.getAbilityId4())).setDirectoryName("images").save(mIcon);
+                            in.close();
+                        }
+
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
+
+                    try {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId5())).setDirectoryName("images").load() == null) {
+                            in = new URL(x.getGodAbility5_URL()).openStream();
+                            mIcon = BitmapFactory.decodeStream(in);
+                            imageSaver.setFileName(String.valueOf(x.getAbilityId5())).setDirectoryName("images").save(mIcon);
+                            in.close();
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        ex.printStackTrace();
+                    }
                 } catch (Exception e) {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
@@ -189,6 +214,12 @@ public class GodListActivity extends AppCompatActivity {
         intent.putExtra("role", godList.get(position).getRoles());
         intent.putExtra("title", godList.get(position).getTitle());
         intent.putExtra("type", godList.get(position).getType());
+        intent.putExtra("godID", String.valueOf(godList.get(position).getId()));
+        intent.putExtra("ability1ID", String.valueOf(godList.get(position).getAbilityId1()));
+        intent.putExtra("ability2ID", String.valueOf(godList.get(position).getAbilityId2()));
+        intent.putExtra("ability3ID", String.valueOf(godList.get(position).getAbilityId3()));
+        intent.putExtra("ability4ID", String.valueOf(godList.get(position).getAbilityId4()));
+        intent.putExtra("ability5ID", String.valueOf(godList.get(position).getAbilityId5()));
         startActivity(intent);
 
     }
