@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:id="@+id/godScroller"
     >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,11 +19,12 @@
 
     <RelativeLayout android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:id="@+id/intro_god_layout">
+    android:id="@+id/intro_god_layout"
+        android:background="@drawable/my_border">
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:id="@+id/god_icon" />
 
     <TextView
@@ -67,7 +69,9 @@
         android:layout_below="@+id/god_icon"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="startWiki" />
+        android:onClick="startWiki"
+        android:textColor="@color/text_color"
+        android:background="@drawable/my_border" />
 </RelativeLayout>
 
 
@@ -78,7 +82,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/stats_layout"
         android:layout_below="@+id/intro_god_layout"
-        android:onClick="hide">
+        android:onClick="hide"
+        android:background="@drawable/my_border">
 
         <ImageView
             android:layout_width="62dp"
@@ -89,7 +94,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/inner_stats_layout"
-            android:layout_below="@+id/stats_image">
+            android:layout_below="@+id/stats_image"
+            android:visibility="gone"
+            android:contextClickable="true"
+            android:alpha="0">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,6 +109,17 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Stats"
+            android:id="@+id/stats_header_text"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/stats_image"
+            android:layout_toEndOf="@+id/stats_image"
+            android:textColor="@color/text_color" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -109,7 +128,7 @@
         android:id="@+id/ability_passive_layout"
         android:layout_below="@+id/stats_layout"
         android:onClick="hide"
-       >
+        android:background="@drawable/my_border">
 
         <ImageView
             android:layout_width="62dp"
@@ -121,7 +140,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/inner_ability_passive_layout"
             android:layout_below="@+id/ability_passive_image"
-            >
+            android:visibility="gone"
+            android:alpha="0">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -150,7 +170,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/ability1_layout"
         android:layout_below="@+id/ability_passive_layout"
-        android:onClick="hide">
+        android:onClick="hide"
+        android:background="@drawable/my_border">
 
         <ImageView
             android:layout_width="62dp"
@@ -161,7 +182,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/inner_ability1_layout"
-            android:layout_below="@+id/ability1_image">
+            android:layout_below="@+id/ability1_image"
+            android:visibility="gone"
+            android:alpha="0">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -173,6 +196,17 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ability 1:"
+            android:id="@+id/ability1_header_text"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ability1_image"
+            android:layout_toEndOf="@+id/ability1_image"
+            android:textColor="@color/text_color" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -180,7 +214,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/abillity2_layout"
         android:layout_below="@+id/ability1_layout"
-        android:onClick="hide" >
+        android:onClick="hide"
+        android:background="@drawable/my_border">
 
         <ImageView
             android:layout_width="62dp"
@@ -191,7 +226,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/inner_ability2_layout"
-            android:layout_below="@+id/ability2_image" >
+            android:layout_below="@+id/ability2_image"
+            android:visibility="gone"
+            android:alpha="0">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -201,6 +238,17 @@
                 android:id="@+id/ability2_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ability 2:"
+            android:id="@+id/ability2_header_text"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ability2_image"
+            android:layout_toEndOf="@+id/ability2_image"
+            android:textColor="@color/text_color" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -208,7 +256,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/ability3_layout"
         android:layout_below="@+id/abillity2_layout"
-        android:onClick="hide" >
+        android:onClick="hide"
+        android:background="@drawable/my_border">
 
         <ImageView
             android:layout_width="62dp"
@@ -219,7 +268,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/inner_ability3_layout"
-            android:layout_below="@+id/ability3_image" >
+            android:layout_below="@+id/ability3_image"
+            android:visibility="gone"
+            android:alpha="0">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -229,6 +280,17 @@
                 android:id="@+id/ability3_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ability 3:"
+            android:id="@+id/ability3_header_text"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ability3_image"
+            android:layout_toEndOf="@+id/ability3_image"
+            android:textColor="@color/text_color" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -236,7 +298,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/ability4_layout"
         android:layout_below="@+id/ability3_layout"
-        android:onClick="hide" >
+        android:onClick="hide"
+        android:background="@drawable/my_border">
 
         <ImageView
             android:layout_width="62dp"
@@ -247,7 +310,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/inner_ability4_layout"
-            android:layout_below="@+id/ability4_image" >
+            android:layout_below="@+id/ability4_image"
+            android:visibility="gone"
+            android:alpha="0">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -257,6 +322,17 @@
                 android:id="@+id/ability4_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Ability 4:"
+            android:id="@+id/ability4_header_text"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ability4_image"
+            android:layout_toEndOf="@+id/ability4_image"
+            android:textColor="@color/text_color" />
     </RelativeLayout>
 
 
