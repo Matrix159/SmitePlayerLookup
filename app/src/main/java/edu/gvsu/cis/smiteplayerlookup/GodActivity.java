@@ -388,18 +388,15 @@ public class GodActivity extends AppCompatActivity {
             }
             else
             {
-                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) innerAbility3Layout.getLayoutParams();
-                params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
-                innerAbility3Layout.setLayoutParams(params);
-                innerAbility3Layout.setVisibility(View.VISIBLE);
-                TextView temp = (TextView) innerAbility3Layout.getChildAt(0);
-                temp.setText("Swag");
+                innerAbility3Layout.setVisibility(View.VISIBLE);//test
+                innerAbility3Layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+                final int height = innerAbility3Layout.getMeasuredHeight();
                 innerAbility3Layout.animate().alpha(1.0f).setDuration(700).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
                         System.out.println(innerAbility3Layout.getHeight());
                         if (ability3Layout.getBottom() - scroller.getScrollY() > scroller.getHeight()) {
-                            scroller.scrollTo(0, (ability3Layout.getBottom() + innerAbility3Layout.getHeight()) - scroller.getHeight());
+                            scroller.scrollTo(0, (ability3Layout.getBottom() + height) - scroller.getHeight());
                         }
                     }
 
