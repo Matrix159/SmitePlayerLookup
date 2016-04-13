@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,9 @@ public class GodActivity extends AppCompatActivity {
         innerAbility2Layout = (RelativeLayout) findViewById(R.id.inner_ability2_layout);
         ability3Layout = (RelativeLayout) findViewById(R.id.ability3_layout);
         innerAbility3Layout = (RelativeLayout) findViewById(R.id.inner_ability3_layout);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) innerAbility3Layout.getLayoutParams();
+        params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+        innerAbility3Layout.setLayoutParams(params);
         ability4Layout = (RelativeLayout) findViewById(R.id.ability4_layout);
         innerAbility4Layout = (RelativeLayout) findViewById(R.id.inner_ability4_layout);
         statsText = (TextView) findViewById(R.id.stats_text);
@@ -102,9 +106,24 @@ public class GodActivity extends AppCompatActivity {
                     R.drawable.placeholder));
         else
             ability1Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability1ID")).setDirectoryName("images").load());
-        ability2Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability2ID")).setDirectoryName("images").load());
-        ability3Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability3ID")).setDirectoryName("images").load());
-        ability4Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability4ID")).setDirectoryName("images").load());
+
+        if(imageSaver.setFileName(intent.getStringExtra("ability2ID")).setDirectoryName("images").load() == null)
+            ability2Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
+                    R.drawable.placeholder));
+        else
+            ability2Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability2ID")).setDirectoryName("images").load());
+
+        if(imageSaver.setFileName(intent.getStringExtra("ability3ID")).setDirectoryName("images").load() == null)
+            ability3Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
+                    R.drawable.placeholder));
+        else
+            ability3Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability3ID")).setDirectoryName("images").load());
+
+        if(imageSaver.setFileName(intent.getStringExtra("ability4ID")).setDirectoryName("images").load() == null)
+            ability4Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
+                    R.drawable.placeholder));
+        else
+            ability4Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability4ID")).setDirectoryName("images").load());
     }
 
 
@@ -208,12 +227,10 @@ public class GodActivity extends AppCompatActivity {
                 innerAbilityPassiveLayout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
-
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-
                     }
 
                     @Override
@@ -346,7 +363,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbility3Layout.getVisibility() == View.VISIBLE)
             {
-                innerAbility3Layout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbility3Layout.animate().alpha(0.0f).setDuration(250).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -371,17 +388,24 @@ public class GodActivity extends AppCompatActivity {
             }
             else
             {
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) innerAbility3Layout.getLayoutParams();
+                params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
+                innerAbility3Layout.setLayoutParams(params);
                 innerAbility3Layout.setVisibility(View.VISIBLE);
-                innerAbility3Layout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                TextView temp = (TextView) innerAbility3Layout.getChildAt(0);
+                temp.setText("Swag");
+                innerAbility3Layout.animate().alpha(1.0f).setDuration(700).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
-
+                        System.out.println(innerAbility3Layout.getHeight());
+                        if (ability3Layout.getBottom() - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, (ability3Layout.getBottom() + innerAbility3Layout.getHeight()) - scroller.getHeight());
+                        }
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        if(ability3Layout.getBottom() > scroller.getHeight())
-                            scroller.scrollTo(ability3Layout.getScrollX(), ability3Layout.getBottom());
+
                     }
 
                     @Override
@@ -403,7 +427,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbility4Layout.getVisibility() == View.VISIBLE)
             {
-                innerAbility4Layout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbility4Layout.animate().alpha(0.0f).setDuration(250).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -437,8 +461,9 @@ public class GodActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        if(ability4Layout.getBottom() > scroller.getHeight())
-                        scroller.scrollTo(ability4Layout.getScrollX(), ability4Layout.getBottom());
+                        if (ability4Layout.getBottom() - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, (ability4Layout.getBottom() + innerAbility4Layout.getHeight()) - scroller.getHeight());
+                        }
                     }
 
                     @Override
