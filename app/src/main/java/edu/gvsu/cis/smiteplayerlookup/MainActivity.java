@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            loading_panel.setVisibility(View.VISIBLE);
-            new AsynchCaller().execute();
             return true;
         }
 
@@ -199,87 +197,5 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
     }
 
-    private class AsynchCaller extends AsyncTask<Void, Void, Void> {
 
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            while (master.getSessionId() == null) {
-
-            }
-            List<GodInfo> godInfoList = master.getGods(1);
-            for (GodInfo x : godInfoList) {
-                Bitmap mIcon;
-                InputStream in = null;
-                if(x.getName().equals("Ravana"))
-                {
-                    System.out.println(x.getGodAbility1_URL());
-                    System.out.println(x.getGodAbility2_URL());
-                    System.out.println(x.getGodAbility3_URL());
-                    System.out.println(x.getGodAbility4_URL());
-                    System.out.println(x.getGodAbility5_URL());
-                }
-                try {
-                        System.out.println(x.getName());
-                        in = new URL(x.getGodIcon_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName()).setDirectoryName("images").save(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility1_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability1").setDirectoryName("images").save(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility2_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability2").setDirectoryName("images").save(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility3_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability3").setDirectoryName("images").save(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility4_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability4").setDirectoryName("images").save(mIcon);
-                        in.close();
-
-                        in = new URL(x.getGodAbility5_URL()).openStream();
-                        mIcon = BitmapFactory.decodeStream(in);
-                        imageSaver.setFileName(x.getName() + "ability5").setDirectoryName("images").save(mIcon);
-                        in.close();
-
-                } catch (Exception e) {
-                    Log.e("Error", e.getMessage());
-                    e.printStackTrace();
-                }
-                finally
-                {
-                    try
-                    {
-                        if(in != null)
-                            in.close();
-                    }
-                    catch(IOException ex)
-                    {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            loading_panel.setVisibility(View.GONE);
-        }
-    }
 }

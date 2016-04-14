@@ -14,9 +14,13 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
+import edu.gvsu.cis.smitedataretrieval.godinfo.Menuitem;
+import edu.gvsu.cis.smitedataretrieval.godinfo.Rankitem;
 
 public class GodActivity extends AppCompatActivity {
 
@@ -57,24 +61,87 @@ public class GodActivity extends AppCompatActivity {
         innerAbility2Layout = (RelativeLayout) findViewById(R.id.inner_ability2_layout);
         ability3Layout = (RelativeLayout) findViewById(R.id.ability3_layout);
         innerAbility3Layout = (RelativeLayout) findViewById(R.id.inner_ability3_layout);
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) innerAbility3Layout.getLayoutParams();
-        params.height = RelativeLayout.LayoutParams.WRAP_CONTENT;
-        innerAbility3Layout.setLayoutParams(params);
         ability4Layout = (RelativeLayout) findViewById(R.id.ability4_layout);
         innerAbility4Layout = (RelativeLayout) findViewById(R.id.inner_ability4_layout);
-        statsText = (TextView) findViewById(R.id.stats_text);
+
+
         statsHeaderText = (TextView) findViewById(R.id.stats_header_text);
-        abilityPassiveText = (TextView) findViewById(R.id.passive_text);
         abilityPassiveHeaderText = (TextView) findViewById(R.id.abilitypassive_header_text);
+        ability1HeaderText = (TextView) findViewById(R.id.ability1_header_text);
+        ability1HeaderText.append(godList.get(position).getAbility1());
+        ability2HeaderText = (TextView) findViewById(R.id.ability2_header_text);
+        ability2HeaderText.append(godList.get(position).getAbility2());
+        ability3HeaderText = (TextView) findViewById(R.id.ability3_header_text);
+        ability3HeaderText.append(godList.get(position).getAbility3());
+        ability4HeaderText = (TextView) findViewById(R.id.ability4_header_text);
+        ability4HeaderText.append(godList.get(position).getAbility4());
+
+        statsText = (TextView) findViewById(R.id.stats_text);
+        abilityPassiveText = (TextView) findViewById(R.id.passive_text);
+        for(Menuitem m: godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
+        {
+            abilityPassiveText.append(m.getDescription() + " " + m.getValue() + "\n");
+        }
+        for(Rankitem r: godList.get(position).getAbilityDescription5().getItemDescription().getRankitems())
+        {
+            abilityPassiveText.append("\n" + r.getDescription() + " " + r.getValue() + "\n");
+        }
+        abilityPassiveText.append("\n" + godList.get(position).getAbilityDescription5().getItemDescription().getDescription() + "\n");
 
         ability1Text = (TextView) findViewById(R.id.ability1_text);
+        for(Menuitem m: godList.get(position).getAbilityDescription1().getItemDescription().getMenuitems())
+        {
+            ability1Text.append(m.getDescription() + " " + m.getValue() + "\n");
+        }
+        for(Rankitem r: godList.get(position).getAbilityDescription1().getItemDescription().getRankitems())
+        {
+            ability1Text.append("\n" + r.getDescription() + " " + r.getValue() + "\n");
+        }
+        ability1Text.append("\n" + godList.get(position).getAbilityDescription1().getItemDescription().getDescription() + "\n");
+        ability1Text.append("\n" + "Cost: " + godList.get(position).getAbilityDescription1().getItemDescription().getCost() + "\n");
+        ability1Text.append("Cooldown: " + godList.get(position).getAbilityDescription1().getItemDescription().getCooldown() + "\n");
+
         ability2Text = (TextView) findViewById(R.id.ability2_text);
+        for(Menuitem m: godList.get(position).getAbilityDescription2().getItemDescription().getMenuitems())
+        {
+            ability2Text.append(m.getDescription() + " " + m.getValue() + "\n");
+        }
+        for(Rankitem r: godList.get(position).getAbilityDescription2().getItemDescription().getRankitems())
+        {
+            ability2Text.append("\n" + r.getDescription() + " " + r.getValue() + "\n");
+        }
+        ability2Text.append("\n" + godList.get(position).getAbilityDescription2().getItemDescription().getDescription() + "\n");
+        ability2Text.append("\n" + "Cost: " + godList.get(position).getAbilityDescription2().getItemDescription().getCost() + "\n");
+        ability2Text.append("Cooldown: " + godList.get(position).getAbilityDescription2().getItemDescription().getCooldown() + "\n");
+
         ability3Text = (TextView) findViewById(R.id.ability3_text);
+        for(Menuitem m: godList.get(position).getAbilityDescription3().getItemDescription().getMenuitems())
+        {
+            ability3Text.append(m.getDescription() + " " + m.getValue() + "\n");
+        }
+        for(Rankitem r: godList.get(position).getAbilityDescription3().getItemDescription().getRankitems())
+        {
+            ability3Text.append("\n" + r.getDescription() + " " + r.getValue() + "\n");
+        }
+        ability3Text.append("\n" + godList.get(position).getAbilityDescription3().getItemDescription().getDescription() + "\n");
+        ability3Text.append("\n" + "Cost: " + godList.get(position).getAbilityDescription3().getItemDescription().getCost() + "\n");
+        ability3Text.append("Cooldown: " + godList.get(position).getAbilityDescription3().getItemDescription().getCooldown() + "\n");
+
         ability4Text = (TextView) findViewById(R.id.ability4_text);
+        for(Menuitem m: godList.get(position).getAbilityDescription4().getItemDescription().getMenuitems())
+        {
+            ability4Text.append(m.getDescription() + " " + m.getValue() + "\n");
+        }
+        for(Rankitem r: godList.get(position).getAbilityDescription4().getItemDescription().getRankitems())
+        {
+            ability4Text.append("\n" + r.getDescription() + " " + r.getValue() + "\n");
+        }
+        ability4Text.append("\n" + godList.get(position).getAbilityDescription4().getItemDescription().getDescription() + "\n");
+        ability4Text.append("\n" + "Cost: " + godList.get(position).getAbilityDescription4().getItemDescription().getCost() + "\n");
+        ability4Text.append("Cooldown: " + godList.get(position).getAbilityDescription4().getItemDescription().getCooldown() + "\n");
 
         statsText.setText("To be filled");
         abilityPassiveHeaderText.append(" " + godList.get(position).getAbility5());
-        abilityPassiveText.setText("Passive information here");
         godName.setText(" " + intent.getStringExtra("godName"));
         race.setText(" " + intent.getStringExtra("pantheon") + ": " + intent.getStringExtra("title"));
         role.setText(intent.getStringExtra("role") + " " + "(" + intent.getStringExtra("type") + " )");
@@ -86,6 +153,9 @@ public class GodActivity extends AppCompatActivity {
         ability2Image = (ImageView) findViewById(R.id.ability2_image);
         ability3Image = (ImageView) findViewById(R.id.ability3_image);
         ability4Image = (ImageView) findViewById(R.id.ability4_image);
+
+
+
         if(imageSaver.setFileName(intent.getStringExtra("godID")).setDirectoryName("images").load() == null)
             godImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
@@ -142,7 +212,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerStatsLayout.getVisibility() == View.VISIBLE)
             {
-                innerStatsLayout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerStatsLayout.animate().alpha(0.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -168,7 +238,7 @@ public class GodActivity extends AppCompatActivity {
             else
             {
                 innerStatsLayout.setVisibility(View.VISIBLE);
-                innerStatsLayout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerStatsLayout.animate().alpha(1.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -176,7 +246,9 @@ public class GodActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-
+                        if ((statsLayout.getBottom()) - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, statsLayout.getBottom() - scroller.getHeight());
+                        }
                     }
 
                     @Override
@@ -198,7 +270,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbilityPassiveLayout.getVisibility() == View.VISIBLE)
             {
-                innerAbilityPassiveLayout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbilityPassiveLayout.animate().alpha(0.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -224,13 +296,17 @@ public class GodActivity extends AppCompatActivity {
             else
             {
                 innerAbilityPassiveLayout.setVisibility(View.VISIBLE);
-                innerAbilityPassiveLayout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbilityPassiveLayout.animate().alpha(1.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
+
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
+                        if ((abilityPassiveLayout.getBottom()) - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, abilityPassiveLayout.getBottom() - scroller.getHeight());
+                        }
                     }
 
                     @Override
@@ -252,7 +328,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbility1Layout.getVisibility() == View.VISIBLE)
             {
-                innerAbility1Layout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbility1Layout.animate().alpha(0.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -278,7 +354,7 @@ public class GodActivity extends AppCompatActivity {
             else
             {
                 innerAbility1Layout.setVisibility(View.VISIBLE);
-                innerAbility1Layout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbility1Layout.animate().alpha(1.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -286,7 +362,9 @@ public class GodActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-
+                        if ((ability1Layout.getBottom()) - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, ability1Layout.getBottom() - scroller.getHeight());
+                        }
                     }
 
                     @Override
@@ -307,7 +385,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbility2Layout.getVisibility() == View.VISIBLE)
             {
-                innerAbility2Layout.animate().alpha(0.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbility2Layout.animate().alpha(0.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -333,7 +411,7 @@ public class GodActivity extends AppCompatActivity {
             else
             {
                 innerAbility2Layout.setVisibility(View.VISIBLE);
-                innerAbility2Layout.animate().alpha(1.0f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                innerAbility2Layout.animate().alpha(1.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -341,7 +419,9 @@ public class GodActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-
+                        if ((ability2Layout.getBottom()) - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, ability2Layout.getBottom() - scroller.getHeight());
+                        }
                     }
 
                     @Override
@@ -363,7 +443,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbility3Layout.getVisibility() == View.VISIBLE)
             {
-                innerAbility3Layout.animate().alpha(0.0f).setDuration(250).setListener(new Animator.AnimatorListener() {
+                innerAbility3Layout.animate().alpha(0.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -388,21 +468,18 @@ public class GodActivity extends AppCompatActivity {
             }
             else
             {
-                innerAbility3Layout.setVisibility(View.VISIBLE);//test
-                innerAbility3Layout.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-                final int height = innerAbility3Layout.getMeasuredHeight();
-                innerAbility3Layout.animate().alpha(1.0f).setDuration(700).setListener(new Animator.AnimatorListener() {
+                innerAbility3Layout.setVisibility(View.VISIBLE);
+                innerAbility3Layout.animate().alpha(1.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
-                        System.out.println(innerAbility3Layout.getHeight());
-                        if (ability3Layout.getBottom() - scroller.getScrollY() > scroller.getHeight()) {
-                            scroller.scrollTo(0, (ability3Layout.getBottom() + height) - scroller.getHeight());
-                        }
+
                     }
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-
+                        if ((ability3Layout.getBottom()) - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, ability3Layout.getBottom() - scroller.getHeight());
+                        }
                     }
 
                     @Override
@@ -424,7 +501,7 @@ public class GodActivity extends AppCompatActivity {
         {
             if(innerAbility4Layout.getVisibility() == View.VISIBLE)
             {
-                innerAbility4Layout.animate().alpha(0.0f).setDuration(250).setListener(new Animator.AnimatorListener() {
+                innerAbility4Layout.animate().alpha(0.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -450,7 +527,7 @@ public class GodActivity extends AppCompatActivity {
             else
             {
                 innerAbility4Layout.setVisibility(View.VISIBLE);
-                innerAbility4Layout.animate().alpha(1.0f).setDuration(250).setListener(new Animator.AnimatorListener() {
+                innerAbility4Layout.animate().alpha(1.0f).setDuration(100).setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
 
@@ -458,8 +535,8 @@ public class GodActivity extends AppCompatActivity {
 
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        if (ability4Layout.getBottom() - scroller.getScrollY() > scroller.getHeight()) {
-                            scroller.scrollTo(0, (ability4Layout.getBottom() + innerAbility4Layout.getHeight()) - scroller.getHeight());
+                        if ((ability4Layout.getBottom()) - scroller.getScrollY() > scroller.getHeight()) {
+                            scroller.scrollTo(0, ability4Layout.getBottom() - scroller.getHeight());
                         }
                     }
 
