@@ -27,6 +27,11 @@ public class PlayerLookupActivity extends AppCompatActivity{
     private SmiteMaster master;
     private String name;
 
+    //stuff for the fragments
+    ConquestFragment conquestFragment;
+    DuelFragment duelFragment;
+    JoustFragment joustFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,29 @@ public class PlayerLookupActivity extends AppCompatActivity{
         Intent intent = this.getIntent();
         name = intent.getStringExtra("playerName");
         createBottomBar();
+
+        if(findViewById(R.id.fragmentHolder) != null){
+            if(savedInstanceState != null){
+                return;
+            }
+
+            conquestFragment = new ConquestFragment();
+            joustFragment = new JoustFragment();
+            duelFragment = new DuelFragment();
+
+            conquestFragment.setArguments(getIntent().getExtras());
+            joustFragment.setArguments(getIntent().getExtras());
+            duelFragment.setArguments(getIntent().getExtras());
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentHolder, conquestFragment)
+                    .add(R.id.fragmentHolder, joustFragment)
+                    .add(R.id.fragmentHolder, duelFragment)
+                    .hide(duelFragment)
+                    .hide(conquestFragment)
+                    .commit();
+        }
+
         new AsynchCaller().execute();
     }
 
@@ -115,7 +143,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         // Create items
         final AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.notification_background, R.color.colorPrimary);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.notification_background, R.color.colorAccent);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.notification_background, R.color.colorPrimary);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.notification_background, R.color.colorPrimaryDark);
 
 // Add items
         bottomNavigation.addItem(item1);
@@ -155,7 +183,29 @@ public class PlayerLookupActivity extends AppCompatActivity{
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, boolean wasSelected) {
+                if(position == 0){
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(duelFragment)
+                            .hide(joustFragment)
+                            .show(conquestFragment)
+                            .commit();
+                }
 
+                if(position == 1){
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(conquestFragment)
+                            .hide(duelFragment)
+                            .show(joustFragment)
+                            .commit();
+                }
+
+                if(position == 2){
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(conquestFragment)
+                            .hide(joustFragment)
+                            .show(duelFragment)
+                            .commit();
+                }
             }
         });
     }
