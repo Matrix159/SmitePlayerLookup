@@ -144,6 +144,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.notification_background, R.color.colorPrimary);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.notification_background, R.color.colorAccent);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.notification_background, R.color.colorPrimaryDark);
+
         TextView rankedText = (TextView) findViewById(R.id.ranked_conquest_text);
         int tier = list.get(0).getRankedConquest().getTier();
         String tierText = "";
@@ -174,9 +175,77 @@ public class PlayerLookupActivity extends AppCompatActivity{
         rankedText.setText("");
         rankedText.append("Ranked Conquest Stats:" + "\n");
         rankedText.append(tierText + "\n");
-        rankedText.append("TP: " + list.get(0).getRankedConquest().getPoints() + "\n");
+        rankedText.append("Current TP: " + list.get(0).getRankedConquest().getPoints() + "\n");
         rankedText.append("Wins/Losses: " + list.get(0).getRankedConquest().getWins() + "/" + list.get(0).getRankedConquest().getLosses() + "\n");
         rankedText.append("Leaves: " + list.get(0).getRankedConquest().getLeaves());
+
+        //stats for joust
+        TextView joustText = (TextView) findViewById(R.id.ranked_joust_text);
+        tier = list.get(0).getRankedJoust().getTier();
+        if(tier <= 5)
+        {
+            tierText = "Bronze " + (6-tier);
+        }
+        else if(tier <= 10)
+        {
+            tierText = "Silver " + (11-tier);
+        }
+        else if(tier <= 15)
+        {
+            tierText = "Gold " + (16-tier);
+        }
+        else if(tier <= 20)
+        {
+            tierText = "Platinum " + (21-tier);
+        }
+        else if(tier <= 25)
+        {
+            tierText = "Diamond " + (22-tier);
+        }
+        else
+        {
+            tierText = "Grandmaster";
+        }
+        joustText.setText("");
+        joustText.append("Ranked Joust Stats: " + "\n");
+        joustText.append(tierText + "\n");
+        joustText.append("Current TP: " + list.get(0).getRankedJoust().getPoints() + "\n");
+        joustText.append("Wins/Losses: " + list.get(0).getRankedJoust().getWins() + "/" + list.get(0).getRankedJoust().getLosses() + "\n");
+        joustText.append("Leaves: " + list.get(0).getRankedJoust().getLeaves());
+
+        //duel stats
+        TextView duelText = (TextView) findViewById(R.id.ranked_duel_text);
+        tier = list.get(0).getRankedDuel().getTier();
+        if(tier <= 5)
+        {
+            tierText = "Bronze " + (6-tier);
+        }
+        else if(tier <= 10)
+        {
+            tierText = "Silver " + (11-tier);
+        }
+        else if(tier <= 15)
+        {
+            tierText = "Gold " + (16-tier);
+        }
+        else if(tier <= 20)
+        {
+            tierText = "Platinum " + (21-tier);
+        }
+        else if(tier <= 25)
+        {
+            tierText = "Diamond " + (22-tier);
+        }
+        else
+        {
+            tierText = "Grandmaster";
+        }
+        duelText.setText("");
+        duelText.append("Ranked Duel Stats: " + "\n");
+        duelText.append(tierText + "\n");
+        duelText.append("Current TP: " + list.get(0).getRankedDuel().getPoints() + "\n");
+        duelText.append("Wins/Losses: " + list.get(0).getRankedDuel().getWins() + "/" + list.get(0).getRankedDuel().getLosses() + "\n");
+        duelText.append("Leaves: " + list.get(0).getRankedDuel().getLeaves());
 
 // Add items
         bottomNavigation.addItem(item1);
