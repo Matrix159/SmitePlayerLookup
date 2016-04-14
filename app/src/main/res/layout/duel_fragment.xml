@@ -7,8 +7,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Duel Stuff!!"
-        android:id="@+id/textView"
+        android:text=""
+        android:id="@+id/ranked_duel_text"
         android:textColor="#ffffff" />
 
 </LinearLayout>

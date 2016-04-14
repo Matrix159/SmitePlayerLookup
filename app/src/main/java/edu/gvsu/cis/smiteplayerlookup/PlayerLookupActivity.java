@@ -26,7 +26,8 @@ public class PlayerLookupActivity extends AppCompatActivity{
     private String[] Colors;
     private SmiteMaster master;
     private String name;
-
+    private List<PlayerInfo> list;
+    private List<PlayerStatus> statusList;
     //stuff for the fragments
     ConquestFragment conquestFragment;
     DuelFragment duelFragment;
@@ -40,8 +41,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         master = new SmiteMaster(this);
         Intent intent = this.getIntent();
         name = intent.getStringExtra("playerName");
-        createBottomBar();
-
+        new AsynchCaller().execute();
         if(findViewById(R.id.fragmentHolder) != null){
             if(savedInstanceState != null){
                 return;
@@ -60,17 +60,16 @@ public class PlayerLookupActivity extends AppCompatActivity{
                     .add(R.id.fragmentHolder, joustFragment)
                     .add(R.id.fragmentHolder, duelFragment)
                     .hide(duelFragment)
-                    .hide(conquestFragment)
+                    .hide(joustFragment)
                     .commit();
         }
 
-        new AsynchCaller().execute();
+
     }
 
     private class AsynchCaller extends AsyncTask<Void, Void, Void>
     {
-        List<PlayerInfo> list;
-        List<PlayerStatus> statusList;
+
         TextView nameTextView = (TextView) findViewById(R.id.playername);
         TextView wins = (TextView) findViewById(R.id.win_text_value);
         TextView losses = (TextView) findViewById(R.id.loss_text_value);
@@ -129,6 +128,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
                 level.setText(String.valueOf(list.get(0).getLevel()));
                 masteryLevel.setText(String.valueOf(list.get(0).getMasteryLevel()));
                 leaves.setText(String.valueOf(list.get(0).getLeaves()));
+                createBottomBar();
 
             }
         }
@@ -141,9 +141,42 @@ public class PlayerLookupActivity extends AppCompatActivity{
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
         // Create items
-        final AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.notification_background, R.color.colorPrimary);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.notification_background, R.color.colorPrimary);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.notification_background, R.color.colorAccent);
         AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.notification_background, R.color.colorPrimaryDark);
+        TextView rankedText = (TextView) findViewById(R.id.ranked_conquest_text);
+        int tier = list.get(0).getRankedConquest().getTier();
+        String tierText = "";
+        if(tier <= 5)
+        {
+            tierText = "Bronze " + (6-tier);
+        }
+        else if(tier <= 10)
+        {
+            tierText = "Silver " + (11-tier);
+        }
+        else if(tier <= 15)
+        {
+            tierText = "Gold " + (16-tier);
+        }
+        else if(tier <= 20)
+        {
+            tierText = "Platinum " + (21-tier);
+        }
+        else if(tier <= 25)
+        {
+            tierText = "Diamond " + (22-tier);
+        }
+        else
+        {
+            tierText = "Grandmaster";
+        }
+        rankedText.setText("");
+        rankedText.append("Ranked Conquest Stats:" + "\n");
+        rankedText.append(tierText + "\n");
+        rankedText.append("TP: " + list.get(0).getRankedConquest().getPoints() + "\n");
+        rankedText.append("Wins/Losses: " + list.get(0).getRankedConquest().getWins() + "/" + list.get(0).getRankedConquest().getLosses() + "\n");
+        rankedText.append("Leaves: " + list.get(0).getRankedConquest().getLeaves());
 
 // Add items
         bottomNavigation.addItem(item1);
@@ -170,20 +203,21 @@ public class PlayerLookupActivity extends AppCompatActivity{
         bottomNavigation.setColored(true);
 
 // Set current item programmatically
-        bottomNavigation.setCurrentItem(1);
+        bottomNavigation.setCurrentItem(0);
 
 // Customize notification (title, background, typeface)
         bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
 
 // Add or remove notification for each item
-        bottomNavigation.setNotification(4, 1);
-        bottomNavigation.setNotification(0, 1);
+        bottomNavigation.setNotification(4, 0);
+        bottomNavigation.setNotification(0, 0);
 
 // Set listener
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, boolean wasSelected) {
                 if(position == 0){
+
                     getSupportFragmentManager().beginTransaction()
                             .hide(duelFragment)
                             .hide(joustFragment)
