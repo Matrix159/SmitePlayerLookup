@@ -103,7 +103,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Stats text"
                 android:id="@+id/stats_text"
                 android:textColor="@color/text_color" />
 
@@ -147,7 +146,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
                 android:id="@+id/passive_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
@@ -158,7 +156,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/abilitypassive_header_text"
             android:textColor="@color/text_color"
-            android:text="Passive:"
+            android:text="Passive: "
             android:singleLine="false"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/ability_passive_image"
@@ -190,7 +188,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
                 android:id="@+id/ability1_text"
                 android:textColor="@color/text_color" />
 
@@ -200,7 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ability 1:"
+            android:text="Ability 1: "
             android:id="@+id/ability1_header_text"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/ability1_image"
@@ -234,7 +231,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
                 android:id="@+id/ability2_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
@@ -243,7 +239,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ability 2:"
+            android:text="Ability 2: "
             android:id="@+id/ability2_header_text"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/ability2_image"
@@ -276,7 +272,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
                 android:id="@+id/ability3_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
@@ -285,7 +280,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ability 3:"
+            android:text="Ability 3: "
             android:id="@+id/ability3_header_text"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/ability3_image"
@@ -318,7 +313,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
                 android:id="@+id/ability4_text"
                 android:textColor="@color/text_color" />
         </RelativeLayout>
@@ -327,7 +321,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ability 4:"
+            android:text="Ability 4: "
             android:id="@+id/ability4_header_text"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/ability4_image"
