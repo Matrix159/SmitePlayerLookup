@@ -1,12 +1,15 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.nightonke.boommenu.BoomMenuButton;
 
 import org.w3c.dom.Text;
@@ -32,7 +35,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         master = new SmiteMaster(this);
         Intent intent = this.getIntent();
         name = intent.getStringExtra("playerName");
-
+        createBottomBar();
         new AsynchCaller().execute();
     }
 
@@ -103,6 +106,58 @@ public class PlayerLookupActivity extends AppCompatActivity{
         }
 
 
+
+    }
+
+    private void createBottomBar(){
+        AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
+
+        // Create items
+        final AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.notification_background, R.color.colorPrimary);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.notification_background, R.color.colorAccent);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.notification_background, R.color.colorPrimary);
+
+// Add items
+        bottomNavigation.addItem(item1);
+        bottomNavigation.addItem(item2);
+        bottomNavigation.addItem(item3);
+
+// Set background color
+        bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
+
+// Disable the translation inside the CoordinatorLayout
+        bottomNavigation.setBehaviorTranslationEnabled(false);
+
+// Change colors
+        bottomNavigation.setAccentColor(Color.parseColor("#F63D2B"));
+        bottomNavigation.setInactiveColor(Color.parseColor("#747474"));
+
+// Force to tint the drawable (useful for font with icon for example)
+        bottomNavigation.setForceTint(true);
+
+// Force the titles to be displayed (against Material Design guidelines!)
+        bottomNavigation.setForceTitlesDisplay(true);
+
+// Use colored navigation with circle reveal effect
+        bottomNavigation.setColored(true);
+
+// Set current item programmatically
+        bottomNavigation.setCurrentItem(1);
+
+// Customize notification (title, background, typeface)
+        bottomNavigation.setNotificationBackgroundColor(Color.parseColor("#F63D2B"));
+
+// Add or remove notification for each item
+        bottomNavigation.setNotification(4, 1);
+        bottomNavigation.setNotification(0, 1);
+
+// Set listener
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position, boolean wasSelected) {
+
+            }
+        });
     }
 
 }

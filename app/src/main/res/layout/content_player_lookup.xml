@@ -97,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminate="true" />
+
         </RelativeLayout>
 
         <Button
@@ -244,6 +245,8 @@
             android:layout_toRightOf="@+id/mastery_level_text"
             android:textColor="@color/text_color"
             android:layout_marginLeft="5dp" />
+
+
 
 </RelativeLayout>
 </ScrollView>
