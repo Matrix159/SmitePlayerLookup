@@ -29,7 +29,6 @@ public class GodListActivity extends AppCompatActivity {
     private SmiteMaster master;
     protected static List<GodInfo> godList;
     private ArrayList<Bitmap> godBitmaps;
-    private ArrayList<Bitmap> abilityBitmaps;
     private ImageSaver imageSaver;
     private GodListActivity thisActivity;
 
@@ -51,7 +50,6 @@ public class GodListActivity extends AppCompatActivity {
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
-        abilityBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
         mAdapter = new GodListAdapter(godList, godBitmaps, this);

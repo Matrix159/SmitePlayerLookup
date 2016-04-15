@@ -148,7 +148,11 @@ public class PlayerLookupActivity extends AppCompatActivity{
         TextView rankedText = (TextView) findViewById(R.id.ranked_conquest_text);
         int tier = list.get(0).getRankedConquest().getTier();
         String tierText = "";
-        if(tier <= 5)
+        if(tier == 0)
+        {
+            tierText = "Unranked";
+        }
+        else if(tier <= 5)
         {
             tierText = "Bronze " + (6-tier);
         }
@@ -166,7 +170,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         }
         else if(tier <= 25)
         {
-            tierText = "Diamond " + (22-tier);
+            tierText = "Diamond " + (26-tier);
         }
         else
         {
@@ -182,7 +186,11 @@ public class PlayerLookupActivity extends AppCompatActivity{
         //stats for joust
         TextView joustText = (TextView) findViewById(R.id.ranked_joust_text);
         tier = list.get(0).getRankedJoust().getTier();
-        if(tier <= 5)
+        if(tier == 0)
+        {
+            tierText = "Unranked";
+        }
+        else if(tier <= 5)
         {
             tierText = "Bronze " + (6-tier);
         }
@@ -200,7 +208,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         }
         else if(tier <= 25)
         {
-            tierText = "Diamond " + (22-tier);
+            tierText = "Diamond " + (26-tier);
         }
         else
         {
@@ -216,7 +224,11 @@ public class PlayerLookupActivity extends AppCompatActivity{
         //duel stats
         TextView duelText = (TextView) findViewById(R.id.ranked_duel_text);
         tier = list.get(0).getRankedDuel().getTier();
-        if(tier <= 5)
+        if(tier == 0)
+        {
+            tierText = "Unranked";
+        }
+        else if(tier <= 5)
         {
             tierText = "Bronze " + (6-tier);
         }
@@ -234,7 +246,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         }
         else if(tier <= 25)
         {
-            tierText = "Diamond " + (22-tier);
+            tierText = "Diamond " + (26-tier);
         }
         else
         {
