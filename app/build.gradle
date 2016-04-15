@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'FinalReleaseKey'
+            keyPassword 'Callofduty123!'
+            storeFile file('F:/OneDrive/Keystores/android.jks')
+            storePassword 'Callofduty123!'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     packagingOptions {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
@@ -19,22 +26,23 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
-    compile "com.android.support:recyclerview-v7:23.2.1"
+    compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.nightonke:boommenu:1.0.4'
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'junit:junit:4.12'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.aurelhubert:ahbottomnavigation:1.1.0'
-    compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.google.android.gms:play-services-appinvite:8.4.0'
 }
 apply plugin: 'com.google.gms.google-services'
