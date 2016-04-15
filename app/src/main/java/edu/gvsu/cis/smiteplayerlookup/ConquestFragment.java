@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /***********************************************
  * Created by Cameron Sprowls on 4/13/2016.
@@ -17,5 +18,7 @@ public class ConquestFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.conquest_fragment, container, false);
+
+
     }
 }
