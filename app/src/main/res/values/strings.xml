@@ -8,4 +8,6 @@
     <string name="tab_0">Conquest</string>
     <string name="tab_1">Joust</string>
     <string name="tab_2">Duel</string>
+    <string name="sent_invitations_fmt">Iinvitedyou?</string>
+    <string name="send_failed">send failed</string>
 </resources>

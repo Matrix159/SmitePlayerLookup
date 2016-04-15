@@ -57,4 +57,14 @@
             android:indeterminate="true" />
         </RelativeLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invite"
+        android:id="@+id/invite_button"
+        android:layout_below="@+id/search_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:onClick="onInviteClicked" />
+
 </RelativeLayout>

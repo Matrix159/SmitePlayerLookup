@@ -35,4 +35,6 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.aurelhubert:ahbottomnavigation:1.1.0'
+    compile 'com.google.android.gms:play-services:8.4.0'
 }
+apply plugin: 'com.google.gms.google-services'

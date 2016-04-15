@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.firebase.client.Firebase;
+import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.Types.BoomType;
 import com.nightonke.boommenu.Types.ButtonType;
@@ -43,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     private ImageSaver imageSaver;
     private SmiteMaster master;
     private RelativeLayout loading_panel;
-
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final int REQUEST_INVITE = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,6 +159,39 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         intent.putExtra("playerName", editPlayerName.getText().toString());
         this.startActivity(intent);
 
+    }
+
+    public void onInviteClicked(View v)
+    {
+
+        Intent intent = new AppInviteInvitation.IntentBuilder("Come join!")
+                .setMessage("Please.")
+                //.setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
+                //.setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
+                .setCallToActionText("wat")
+                .build();
+        startActivityForResult(intent, REQUEST_INVITE);
+
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode);
+
+        if (requestCode == REQUEST_INVITE) {
+            if (resultCode == RESULT_OK) {
+                // Check how many invitations were sent and log a message
+                // The ids array contains the unique invitation ids for each invitation sent
+                // (one for each contact select by the user). You can use these for analytics
+                // as the ID will be consistent on the sending and receiving devices.
+                String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
+
+            } else {
+                // Sending failed or it was canceled, show failure message to the user
+                System.out.println("Sending failed");
+            }
+        }
     }
     /********************************************************
      * Returns an int for the color in a string of colors
