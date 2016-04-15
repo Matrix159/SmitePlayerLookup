@@ -166,13 +166,13 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
         Intent intent = new AppInviteInvitation.IntentBuilder("Come try out this app!")
                 .setMessage("Hey you! Yes, you! Come get some of this delicious data munching Smite application!")
-                .setEmailSubject("App invite")
-                .setEmailHtmlContent("<html><body>"
-            + "<a href=\"%%APPINVITE_LINK_PLACEHOLDER%%\">Get it here!</a>"
-            + "</body></html>")
+                //.setEmailSubject("App invite")
+                //.setEmailHtmlContent("<html><body>"
+           // + "<a href=\"%%APPINVITE_LINK_PLACEHOLDER%%\">Get it here!</a>"
+           // + "</body></html>")
                 //.setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
                 //.setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
-                //.setCallToActionText("Try out SPL!")
+                .setCallToActionText("Try out SPL!")
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);
 

@@ -1,0 +1,52 @@
+{
+  "project_info": {
+    "project_id": "smite-player-lookup",
+    "project_number": "289869836942",
+    "name": "Smite Player Lookup"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289869836942:android:650a55f7534382b8",
+        "client_id": "android:edu.gvsu.cis.smiteplayerlookup",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "edu.gvsu.cis.smiteplayerlookup",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289869836942-islq6tuvr67kpalkvt9ngksst0c3blip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gvsu.cis.smiteplayerlookup",
+            "certificate_hash": "5574EFD87FE7E91CA80AD6F33C9A174180113E4A"
+          }
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
