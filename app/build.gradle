@@ -1,14 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'FinalReleaseKey'
-            keyPassword 'Callofduty123!'
-            storeFile file('F:/OneDrive/Keystores/android.jks')
-            storePassword 'Callofduty123!'
-        }
-    }
+
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     packagingOptions {
@@ -26,7 +19,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+
         }
     }
 }

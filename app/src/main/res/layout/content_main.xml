@@ -13,15 +13,6 @@
     tools:showIn="@layout/activity_main"
     android:background="@drawable/better_background">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/smite_logo"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +21,6 @@
         android:hint="Enter player name"
         android:textColorHint="#ffffff"
         android:inputType="text"
-        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:background="@drawable/my_border"
         android:textColor="@color/text_color" />

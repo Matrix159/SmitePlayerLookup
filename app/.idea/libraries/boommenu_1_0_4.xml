@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="boommenu-1.0.4">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.nightonke/boommenu/1.0.4/res" />
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.nightonke/boommenu/1.0.4/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.nightonke/boommenu/1.0.4/f48190a70842e2d9b658d2ea0d73f3345cbf7a0f/boommenu-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
