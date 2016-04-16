@@ -1,50 +1,32 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.firebase.client.Firebase;
+
 import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.Types.BoomType;
 import com.nightonke.boommenu.Types.ButtonType;
 import com.nightonke.boommenu.Types.PlaceType;
 import com.nightonke.boommenu.Util;
-import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.List;
-
-import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
-import edu.gvsu.cis.smitedataretrieval.godinfo.GodInfo;
-import edu.gvsu.cis.smitedataretrieval.playerinfo.PlayerInfo;
 
 public class MainActivity extends AppCompatActivity implements BoomMenuButton.OnSubButtonClickListener, BoomMenuButton.AnimatorListener {
 
     private BoomMenuButton boomButtonActionBar;
     private String[] Colors;
     private EditText editPlayerName;
-    private ImageSaver imageSaver;
-    private SmiteMaster master;
-    private RelativeLayout loading_panel;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_INVITE = 0;
     @Override
@@ -52,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        loading_panel = (RelativeLayout) findViewById(R.id.main_loading_panel);
         //String of colors for the boom menu.
         // TODO: Add more that fit the pallet for each additional button We need
         Colors = new String[]{
@@ -78,8 +59,6 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0, 0);
 
         editPlayerName = (EditText) findViewById(R.id.edit_name);
-        imageSaver = new ImageSaver(this);
-        master = new SmiteMaster(this);
     }
 
     @Override
