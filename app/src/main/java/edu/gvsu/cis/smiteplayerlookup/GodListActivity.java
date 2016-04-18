@@ -1,10 +1,13 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,19 +66,27 @@ public class GodListActivity extends AppCompatActivity {
 
     private class AsynchCaller extends AsyncTask<Void, Void, Void> {
 
-
+        List<GodInfo> godInfoList;
+        boolean badServer = false;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+
         }
 
         @Override
         protected Void doInBackground(Void... params) {
+
             while (master.getSessionId() == null) {
 
             }
-            List<GodInfo> godInfoList = master.getGods(1);
-
+            godInfoList = master.getGods(1);
+            if(godInfoList.get(0).getRet_msg().equals("Invalid session id."))
+            {
+                badServer = true;
+                return null;
+            }
             for (GodInfo x : godInfoList) {
                 godList.add(x);
                 Bitmap mIcon;
@@ -196,6 +207,19 @@ public class GodListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            if(badServer)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+                builder.setMessage("Error with server")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
             findViewById(R.id.loadingPanelGods).setVisibility(View.GONE);
             mAdapter.notifyDataSetChanged();
 
