@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.TextView;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.nightonke.boommenu.BoomMenuButton;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -112,7 +109,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             findViewById(R.id.player_lookup_loading_panel).setVisibility(View.GONE);
-            if(list.size() == 0 || list.get(0).getRet_msg().equals("Invalid session id."))
+            if(list.size() == 0 || list.get(0).getRet_msg() != null)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(thisRef);
                 builder.setMessage("Error with server")

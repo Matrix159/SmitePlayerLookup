@@ -1,6 +1,5 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,7 +12,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -78,11 +76,11 @@ public class GodListActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            while (master.getSessionId() == null) {
+            while(master.getSessionId() == null) {
 
             }
             godInfoList = master.getGods(1);
-            if(godInfoList.get(0).getRet_msg().equals("Invalid session id."))
+            if(godInfoList.get(0).getRet_msg() != null)
             {
                 badServer = true;
                 return null;
