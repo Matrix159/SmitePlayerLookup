@@ -1,10 +1,13 @@
 package edu.gvsu.cis.smiteplayerlookup;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -29,6 +32,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
     private String name;
     private List<PlayerInfo> list;
     private List<PlayerStatus> statusList;
+    private Context thisRef;
     //stuff for the fragments
     ConquestFragment conquestFragment;
     DuelFragment duelFragment;
@@ -40,6 +44,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
         setContentView(R.layout.activity_player_lookup);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         master = new SmiteMaster(this);
+        thisRef = this;
         Intent intent = this.getIntent();
         name = intent.getStringExtra("playerName");
         new AsynchCaller().execute();
@@ -109,7 +114,16 @@ public class PlayerLookupActivity extends AppCompatActivity{
             findViewById(R.id.player_lookup_loading_panel).setVisibility(View.GONE);
             if(list.size() == 0 || list.get(0).getRet_msg().equals("Invalid session id."))
             {
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(thisRef);
+                builder.setMessage("Error with server")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
             else
             {
