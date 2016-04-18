@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +23,8 @@ import com.nightonke.boommenu.Types.ButtonType;
 import com.nightonke.boommenu.Types.PlaceType;
 import com.nightonke.boommenu.Util;
 
+import edu.gvsu.cis.smitedataretrieval.SmiteMaster;
+
 public class MainActivity extends AppCompatActivity implements BoomMenuButton.OnSubButtonClickListener, BoomMenuButton.AnimatorListener {
 
     private BoomMenuButton boomButtonActionBar;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     private EditText editPlayerName;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_INVITE = 0;
+    private static SmiteMaster smiteMaster;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
         ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0, 0);
-
         editPlayerName = (EditText) findViewById(R.id.edit_name);
     }
 
@@ -144,14 +147,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     {
 
         Intent intent = new AppInviteInvitation.IntentBuilder("Come try out this app!")
-                .setMessage("Hey you! Yes, you! Come get some of this delicious data munching Smite application!")
-                //.setEmailSubject("App invite")
-                //.setEmailHtmlContent("<html><body>"
-           // + "<a href=\"%%APPINVITE_LINK_PLACEHOLDER%%\">Get it here!</a>"
-           // + "</body></html>")
-                //.setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
-                //.setCustomImage(Uri.parse(getString(R.string.invitation_custom_image)))
-                .setCallToActionText("Try out SPL!")
+                .setMessage("Try out this app!")
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);
 

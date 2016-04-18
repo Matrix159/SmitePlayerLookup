@@ -38,12 +38,12 @@ public class SmiteMaster  {
     public SmiteMaster(android.content.Context context)
     {
         Firebase.setAndroidContext(context);
+
         myRef = new Firebase("https://matrixprogramming.firebaseio.com/sessioninfo/");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 sessionId = dataSnapshot.child("session_id").getValue().toString();
-                System.out.println(sessionId);
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -55,6 +55,7 @@ public class SmiteMaster  {
                 .setEndpoint("http://api.smitegame.com/smiteapi.svc")
                 .build();
         service = restAdapter.create(SmiteApi.class);
+
     }
 
     public String getSessionId()

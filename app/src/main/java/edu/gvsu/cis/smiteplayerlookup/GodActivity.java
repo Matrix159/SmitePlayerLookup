@@ -77,6 +77,9 @@ public class GodActivity extends AppCompatActivity {
         ability4HeaderText.append(godList.get(position).getAbility4());
 
         statsText = (TextView) findViewById(R.id.stats_text);
+        statsText.append("Pros: " + godList.get(position).getPros() + "\n");
+        statsText.append("Cons: " + godList.get(position).getCons() + "\n");
+        statsText.append("Movement Speed: " + godList.get(position).getSpeed() + "\n");
         abilityPassiveText = (TextView) findViewById(R.id.passive_text);
         for(Menuitem m: godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
         {
@@ -140,7 +143,6 @@ public class GodActivity extends AppCompatActivity {
         ability4Text.append("\n" + "Cost: " + godList.get(position).getAbilityDescription4().getItemDescription().getCost() + "\n");
         ability4Text.append("Cooldown: " + godList.get(position).getAbilityDescription4().getItemDescription().getCooldown() + "\n");
 
-        statsText.setText("To be filled");
         abilityPassiveHeaderText.append(" " + godList.get(position).getAbility5());
         godName.setText(" " + intent.getStringExtra("godName"));
         race.setText(" " + intent.getStringExtra("pantheon") + ": " + intent.getStringExtra("title"));
