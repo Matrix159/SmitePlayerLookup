@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="edu.gvsu.cis.smiteplayerlookup.GodListActivity"
+    tools:context="edu.gvsu.cis.eldridjo.smiteplayerlookup.GodListActivity"
     tools:showIn="@layout/activity_god_list"
     android:background="@drawable/better_background">
     <!-- A RecyclerView with some commonly used attributes -->

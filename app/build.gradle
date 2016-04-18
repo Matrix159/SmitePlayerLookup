@@ -9,7 +9,7 @@ android {
         exclude 'META-INF/NOTICE'
     }
     defaultConfig {
-        applicationId "edu.gvsu.cis.smiteplayerlookup"
+        applicationId "edu.gvsu.cis.eldridjo.smiteplayerlookup"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1

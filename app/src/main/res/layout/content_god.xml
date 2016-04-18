@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="edu.gvsu.cis.smiteplayerlookup.GodActivity"
+    tools:context="edu.gvsu.cis.eldridjo.smiteplayerlookup.GodActivity"
     tools:showIn="@layout/activity_god"
     android:background="@drawable/better_background"
     android:id="@+id/top_god_layout"

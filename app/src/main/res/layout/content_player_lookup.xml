@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="edu.gvsu.cis.smiteplayerlookup.PlayerLookupActivity"
+    tools:context="edu.gvsu.cis.eldridjo.smiteplayerlookup.PlayerLookupActivity"
     tools:showIn="@layout/activity_player_lookup"
     android:background="@drawable/better_background">
 

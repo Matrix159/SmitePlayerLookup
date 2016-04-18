@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.gvsu.cis.smiteplayerlookup" >
+    package="edu.gvsu.cis.eldridjo.smiteplayerlookup" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -33,7 +33,7 @@
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.gvsu.cis.smiteplayerlookup.MainActivity" />
+                android:value="edu.gvsu.cis.eldridjo.smiteplayerlookup.MainActivity" />
         </activity>
         <activity
             android:name=".GodListActivity"
@@ -42,7 +42,7 @@
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.gvsu.cis.smiteplayerlookup.MainActivity" />
+                android:value="edu.gvsu.cis.eldridjo.smiteplayerlookup.MainActivity" />
         </activity>
         <activity
             android:name=".GodActivity"
@@ -51,7 +51,7 @@
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.gvsu.cis.smiteplayerlookup.GodListActivity" />
+                android:value="edu.gvsu.cis.eldridjo.smiteplayerlookup.GodListActivity" />
         </activity>
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
