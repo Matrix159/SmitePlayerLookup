@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -37,7 +34,7 @@ public class GodActivity extends AppCompatActivity {
             ability2Layout, innerAbility2Layout, ability3Layout, innerAbility3Layout, ability4Layout, innerAbility4Layout;
     private List<GodInfo> godList = GodListActivity.godList;
     private ScrollView scroller;
-    private int maxHeight;
+    private GodInfo currentGod;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +42,10 @@ public class GodActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         intent = this.getIntent();
         scroller = (ScrollView) findViewById(R.id.godScroller);
-        maxHeight = this.getResources().getDisplayMetrics().heightPixels;
+
         int position = intent.getIntExtra("position", 0);
+        currentGod = GodListActivity.godList.get(position);
+
         godName = (TextView) findViewById(R.id.god_name);
         race = (TextView) findViewById(R.id.race);
         role = (TextView) findViewById(R.id.role);
@@ -144,9 +143,9 @@ public class GodActivity extends AppCompatActivity {
         ability4Text.append("Cooldown: " + godList.get(position).getAbilityDescription4().getItemDescription().getCooldown() + "\n");
 
         abilityPassiveHeaderText.append(" " + godList.get(position).getAbility5());
-        godName.setText(" " + intent.getStringExtra("godName"));
-        race.setText(" " + intent.getStringExtra("pantheon") + ": " + intent.getStringExtra("title"));
-        role.setText(intent.getStringExtra("role") + " " + "(" + intent.getStringExtra("type") + " )");
+        godName.setText(" " + currentGod.getName());
+        race.setText(" " + currentGod.getPantheon() + ": " + currentGod.getTitle());
+        role.setText(currentGod.getRoles() + " " + "(" + currentGod.getType() + " )");
         imageSaver = new ImageSaver(this);
         godImage = (ImageView) findViewById(R.id.god_icon);
         statsImage = (ImageView) findViewById(R.id.stats_image);
@@ -158,7 +157,7 @@ public class GodActivity extends AppCompatActivity {
 
 
 
-        if(imageSaver.setFileName(intent.getStringExtra("godID")).setDirectoryName("images").load() == null)
+        if(imageSaver.setFileName(String.valueOf(currentGod.getId())).setDirectoryName("images").load() == null)
             godImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else

@@ -62,21 +62,23 @@ public class GodListActivity extends AppCompatActivity {
 
 
 
-    private class AsynchCaller extends AsyncTask<Void, Void, Void> {
+    private class AsynchCaller extends AsyncTask<Void, Void, Void>
+    {
 
         List<GodInfo> godInfoList;
         boolean badServer = false;
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();
-
-
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Void doInBackground(Void... params)
+        {
 
-            while(master.getSessionId() == null) {
+            while(master.getSessionId() == null)
+            {
 
             }
             godInfoList = master.getGods(1);
@@ -85,7 +87,8 @@ public class GodListActivity extends AppCompatActivity {
                 badServer = true;
                 return null;
             }
-            for (GodInfo x : godInfoList) {
+            for (GodInfo x : godInfoList)
+            {
                 godList.add(x);
                 Bitmap mIcon;
                 InputStream in = null;
@@ -96,7 +99,8 @@ public class GodListActivity extends AppCompatActivity {
                     try {
                         if (imageSaver.setFileName(String.valueOf(x.getId())).setDirectoryName("images").load() != null)
                             godBitmaps.add(imageSaver.setFileName(String.valueOf(x.getId())).setDirectoryName("images").load());
-                        else {
+                        else
+                        {
                             in = new URL(x.getGodIcon_URL()).openStream();
                             mIcon = BitmapFactory.decodeStream(in);
                             imageSaver.setFileName(String.valueOf(x.getId())).setDirectoryName("images").save(mIcon);
@@ -112,7 +116,8 @@ public class GodListActivity extends AppCompatActivity {
                     }
 
                     try {
-                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId1())).setDirectoryName("images").load() == null) {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId1())).setDirectoryName("images").load() == null)
+                        {
                             in = new URL(x.getGodAbility1_URL()).openStream();
                             mIcon = BitmapFactory.decodeStream(in);
                             imageSaver.setFileName(String.valueOf(x.getAbilityId1())).setDirectoryName("images").save(mIcon);
@@ -140,7 +145,8 @@ public class GodListActivity extends AppCompatActivity {
                     }
 
                     try {
-                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId3())).setDirectoryName("images").load() == null) {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId3())).setDirectoryName("images").load() == null)
+                        {
                             in = new URL(x.getGodAbility3_URL()).openStream();
                             mIcon = BitmapFactory.decodeStream(in);
                             imageSaver.setFileName(String.valueOf(x.getAbilityId3())).setDirectoryName("images").save(mIcon);
@@ -153,7 +159,8 @@ public class GodListActivity extends AppCompatActivity {
                     }
 
                     try {
-                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId4())).setDirectoryName("images").load() == null) {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId4())).setDirectoryName("images").load() == null)
+                        {
                             in = new URL(x.getGodAbility4_URL()).openStream();
                             mIcon = BitmapFactory.decodeStream(in);
                             imageSaver.setFileName(String.valueOf(x.getAbilityId4())).setDirectoryName("images").save(mIcon);
@@ -167,7 +174,8 @@ public class GodListActivity extends AppCompatActivity {
                     }
 
                     try {
-                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId5())).setDirectoryName("images").load() == null) {
+                        if (imageSaver.setFileName(String.valueOf(x.getAbilityId5())).setDirectoryName("images").load() == null)
+                        {
                             in = new URL(x.getGodAbility5_URL()).openStream();
                             mIcon = BitmapFactory.decodeStream(in);
                             imageSaver.setFileName(String.valueOf(x.getAbilityId5())).setDirectoryName("images").save(mIcon);
@@ -178,7 +186,9 @@ public class GodListActivity extends AppCompatActivity {
                     {
                         ex.printStackTrace();
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     Log.e("Error", e.getMessage());
                     e.printStackTrace();
                 }
@@ -228,18 +238,7 @@ public class GodListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GodActivity.class);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         int position = recyclerView.getChildAdapterPosition(v);
-        intent.putExtra("pantheon", godList.get(position).getPantheon());
         intent.putExtra("position", position);
-        intent.putExtra("godName", godList.get(position).getName());
-        intent.putExtra("role", godList.get(position).getRoles());
-        intent.putExtra("title", godList.get(position).getTitle());
-        intent.putExtra("type", godList.get(position).getType());
-        intent.putExtra("godID", String.valueOf(godList.get(position).getId()));
-        intent.putExtra("ability1ID", String.valueOf(godList.get(position).getAbilityId1()));
-        intent.putExtra("ability2ID", String.valueOf(godList.get(position).getAbilityId2()));
-        intent.putExtra("ability3ID", String.valueOf(godList.get(position).getAbilityId3()));
-        intent.putExtra("ability4ID", String.valueOf(godList.get(position).getAbilityId4()));
-        intent.putExtra("ability5ID", String.valueOf(godList.get(position).getAbilityId5()));
         startActivity(intent);
 
     }
