@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_id": "smite-player-lookup-f0d54",
-    "project_number": "179064767059",
-    "name": "Smite Player Lookup"
+    "project_id": "utility-for-smite",
+    "project_number": "46958746522",
+    "name": "Utility for SMITE"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:179064767059:android:9ff1e43e41faf62b",
+        "mobilesdk_app_id": "1:46958746522:android:9ff1e43e41faf62b",
         "client_id": "android:edu.gvsu.cis.eldridjo.smiteplayerlookup",
         "client_type": 1,
         "android_client_info": {
@@ -15,7 +15,16 @@
           "certificate_hash": []
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "46958746522-7b6d8hkcgchbgan8nn99gkirlkvkppse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gvsu.cis.eldridjo.smiteplayerlookup",
+            "certificate_hash": "75BD3FDD4C58EAE2E4072E5D3C3D526A9F31D41B"
+          }
+        }
+      ],
       "api_key": [],
       "services": {
         "analytics_service": {
@@ -26,39 +35,7 @@
           "apns_config": []
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "google_signin_service": {
-          "status": 1
-        },
-        "ads_service": {
-          "status": 1
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:179064767059:android:650a55f7534382b8",
-        "client_id": "android:edu.gvsu.cis.smiteplayerlookup",
-        "client_type": 1,
-        "android_client_info": {
-          "package_name": "edu.gvsu.cis.smiteplayerlookup",
-          "certificate_hash": []
-        }
-      },
-      "oauth_client": [],
-      "api_key": [],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "cloud_messaging_service": {
-          "status": 1,
-          "apns_config": []
-        },
-        "appinvite_service": {
-          "status": 1,
+          "status": 2,
           "other_platform_oauth_client": []
         },
         "google_signin_service": {

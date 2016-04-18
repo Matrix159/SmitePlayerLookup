@@ -86,7 +86,7 @@ public class GodActivity extends AppCompatActivity {
         }
         for(Rankitem r: godList.get(position).getAbilityDescription5().getItemDescription().getRankitems())
         {
-            abilityPassiveText.append("\n" + r.getDescription() + " " + r.getValue() + "\n");
+            abilityPassiveText.append("\n" + r.getDescription() + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "")+ "\n");
         }
         abilityPassiveText.append("\n" + godList.get(position).getAbilityDescription5().getItemDescription().getDescription() + "\n");
 
@@ -161,40 +161,40 @@ public class GodActivity extends AppCompatActivity {
             godImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else
-            godImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("godID")).setDirectoryName("images").load());
+            godImage.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getId())).setDirectoryName("images").load());
 
 
         statsImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                 R.drawable.placeholder));
-        if(imageSaver.setFileName(intent.getStringExtra("ability5ID")).setDirectoryName("images").load() == null)
+        if(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId5())).setDirectoryName("images").load() == null)
             abilityPassiveImage.setImageBitmap((BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder)));
         else
-        abilityPassiveImage.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability5ID")).setDirectoryName("images").load());
+        abilityPassiveImage.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId5())).setDirectoryName("images").load());
 
-        if(imageSaver.setFileName(intent.getStringExtra("ability1ID")).setDirectoryName("images").load() == null)
+        if(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId1())).setDirectoryName("images").load() == null)
             ability1Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else
-            ability1Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability1ID")).setDirectoryName("images").load());
+            ability1Image.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId1())).setDirectoryName("images").load());
 
-        if(imageSaver.setFileName(intent.getStringExtra("ability2ID")).setDirectoryName("images").load() == null)
+        if(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId2())).setDirectoryName("images").load() == null)
             ability2Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else
-            ability2Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability2ID")).setDirectoryName("images").load());
+            ability2Image.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId2())).setDirectoryName("images").load());
 
-        if(imageSaver.setFileName(intent.getStringExtra("ability3ID")).setDirectoryName("images").load() == null)
+        if(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId3())).setDirectoryName("images").load() == null)
             ability3Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else
-            ability3Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability3ID")).setDirectoryName("images").load());
+            ability3Image.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId3())).setDirectoryName("images").load());
 
-        if(imageSaver.setFileName(intent.getStringExtra("ability4ID")).setDirectoryName("images").load() == null)
+        if(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId4())).setDirectoryName("images").load() == null)
             ability4Image.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else
-            ability4Image.setImageBitmap(imageSaver.setFileName(intent.getStringExtra("ability4ID")).setDirectoryName("images").load());
+            ability4Image.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId4())).setDirectoryName("images").load());
     }
 
 
