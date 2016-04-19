@@ -145,7 +145,11 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     public void onInviteClicked(View v)
     {
 
-        Intent intent = new AppInviteInvitation.IntentBuilder("Come try out this app!")
+        Intent intent = new AppInviteInvitation.IntentBuilder("App Referral")
+                .setEmailHtmlContent("<html><body>"
+                        + "<a href=\"%%APPINVITE_LINK_PLACEHOLDER%%\">Come try out Utility for Smite!</a>"
+                        + "</body></html>")
+                .setEmailSubject("Utility for Smite")
                 .setMessage("Try out this app!")
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);

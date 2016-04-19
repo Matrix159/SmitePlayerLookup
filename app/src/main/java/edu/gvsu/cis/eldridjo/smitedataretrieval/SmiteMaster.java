@@ -58,6 +58,26 @@ public class SmiteMaster  {
         service = restAdapter.create(SmiteApi.class);
 
     }
+    public SmiteMaster()
+    {
+        myRef = new Firebase("https://matrixprogramming.firebaseio.com/sessioninfo/");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                sessionId = dataSnapshot.child("session_id").getValue().toString();
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("Firebase Error.");
+            }
+        });
+        timestamp =  newTimeStamp();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://api.smitegame.com/smiteapi.svc")
+                .build();
+        service = restAdapter.create(SmiteApi.class);
+
+    }
 
     public String getSessionId()
     {
