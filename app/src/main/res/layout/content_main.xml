@@ -50,7 +50,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Invite"
+        android:text="Invite Friends"
         android:id="@+id/invite_button"
         android:layout_below="@+id/search_button"
         android:layout_centerHorizontal="true"

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,25 +76,27 @@ public class GodListActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(Void... params)
-        {
+        protected Void doInBackground(Void... params) {
 
-            while(master.getSessionId() == null)
-            {
+            while (master.getSessionId() == null) {
 
             }
             godInfoList = master.getGods(1);
-            if(godInfoList.get(0).getRet_msg() != null)
-            {
+            if (godInfoList.get(0).getRet_msg() != null) {
                 badServer = true;
                 return null;
             }
-            for (GodInfo x : godInfoList)
-            {
+            for (GodInfo x : godInfoList) {
                 godList.add(x);
                 Bitmap mIcon;
                 InputStream in = null;
-                try
+
+                String godURI = "@drawable/i" + x.getId();  // where myresource (without the extension) is the file
+                int godIcon = getResources().getIdentifier(godURI, null, getPackageName());
+                godBitmaps.add(BitmapFactory.decodeResource(thisActivity.getResources(), godIcon));
+
+
+                /*try
                 {
                         System.out.println(x.getName());
 
@@ -206,9 +210,11 @@ public class GodListActivity extends AppCompatActivity {
 
                 }
 
+            }*/
+
+
+
             }
-
-
             return null;
         }
 

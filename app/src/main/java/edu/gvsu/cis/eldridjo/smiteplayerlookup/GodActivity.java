@@ -13,6 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import edu.gvsu.cis.eldridjo.smitedataretrieval.godinfo.GodInfo;
@@ -80,6 +82,7 @@ public class GodActivity extends AppCompatActivity {
         statsText.append("Cons: " + godList.get(position).getCons() + "\n");
         statsText.append("Movement Speed: " + godList.get(position).getSpeed() + "\n");
         abilityPassiveText = (TextView) findViewById(R.id.passive_text);
+        System.out.println(position);
         for(Menuitem m: godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
         {
             abilityPassiveText.append(m.getDescription() + " " + m.getValue() + "\n");
@@ -155,9 +158,81 @@ public class GodActivity extends AppCompatActivity {
         ability3Image = (ImageView) findViewById(R.id.ability3_image);
         ability4Image = (ImageView) findViewById(R.id.ability4_image);
 
+        String placeholderURI = "@drawable/placeholder";
+        String godURI = "@drawable/i" + currentGod.getId();  // where myresource (without the extension) is the file
+        int godIcon = getResources().getIdentifier(godURI, null, getPackageName());
+        if(godIcon == 0)
+        {
+            godIcon = getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+        Picasso.with(this).load(godIcon)
+                .error(R.drawable.placeholder)
+                .into(godImage);
 
 
-        if(imageSaver.setFileName(String.valueOf(currentGod.getId())).setDirectoryName("images").load() == null)
+        String statsURI = "@drawable/placeholder";  // where myresource (without the extension) is the file
+        int statsIcon= getResources().getIdentifier(statsURI, null, getPackageName());
+        if(statsIcon == 0)
+        {
+            statsIcon = getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+        Picasso.with(this).load(statsIcon)
+                .error(R.drawable.placeholder)
+                .into(statsImage);
+
+        String godAbility1URI = "@drawable/i" + currentGod.getAbilityId1();  // where myresource (without the extension) is the file
+        int godAbility1Icon= getResources().getIdentifier(godAbility1URI, null, getPackageName());
+        if(godAbility1Icon == 0)
+        {
+            godAbility1Icon = getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+        Picasso.with(this).load(godAbility1Icon)
+                .error(R.drawable.placeholder)
+                .into(ability1Image);;
+
+        String godAbility2URI = "@drawable/i" + currentGod.getAbilityId2();  // where myresource (without the extension) is the file
+        int godAbility2Icon= getResources().getIdentifier(godAbility2URI, null, getPackageName());
+        if(godAbility2Icon == 0)
+        {
+            godAbility2Icon = getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+        Picasso.with(this).load(godAbility2Icon)
+                .error(R.drawable.placeholder)
+                .into(ability2Image);
+
+        String godAbility3URI = "@drawable/i" + currentGod.getAbilityId3();  // where myresource (without the extension) is the file
+        int godAbility3Icon= getResources().getIdentifier(godAbility3URI, null, getPackageName());
+        if(godAbility3Icon == 0)
+        {
+            godAbility3Icon = getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+        Picasso.with(this).load(godAbility3Icon)
+                .error(R.drawable.placeholder)
+                .into(ability3Image);
+
+        String godAbility4URI = "@drawable/i" + currentGod.getAbilityId4();  // where myresource (without the extension) is the file
+        int godAbility4Icon= getResources().getIdentifier(godAbility4URI, null, getPackageName());
+        if(godAbility4Icon == 0)
+        {
+            godAbility4Icon = getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+        Picasso.with(this).load(godAbility4Icon)
+                .error(R.drawable.placeholder)
+                .into(ability4Image);
+
+        String godAbility5URI = "@drawable/i" + currentGod.getAbilityId5();  // where myresource (without the extension) is the file
+        int godAbility5Icon= getResources().getIdentifier(godAbility5URI, null, getPackageName());
+        if(godAbility5Icon == 0)
+        {
+            godAbility5Icon= getResources().getIdentifier(placeholderURI, null, getPackageName());
+        }
+
+        Picasso.with(this).load(godAbility5Icon)
+                .error(R.drawable.placeholder)
+                .into(abilityPassiveImage);
+
+
+        /*if(imageSaver.setFileName(String.valueOf(currentGod.getId())).setDirectoryName("images").load() == null)
             godImage.setImageBitmap(BitmapFactory.decodeResource(this.getResources(),
                     R.drawable.placeholder));
         else
@@ -195,6 +270,7 @@ public class GodActivity extends AppCompatActivity {
                     R.drawable.placeholder));
         else
             ability4Image.setImageBitmap(imageSaver.setFileName(String.valueOf(currentGod.getAbilityId4())).setDirectoryName("images").load());
+            */
     }
 
 
@@ -203,7 +279,7 @@ public class GodActivity extends AppCompatActivity {
         Intent i = new Intent();
         i.setAction(Intent.ACTION_VIEW);
         i.addCategory(Intent.CATEGORY_BROWSABLE);
-        i.setData(Uri.parse("http://smite.gamepedia.com/" + intent.getStringExtra("godName")));
+        i.setData(Uri.parse("http://smite.gamepedia.com/" + currentGod.getName()));
         startActivity(i);
     }
 
