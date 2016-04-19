@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_id": "utility-for-smite",
-    "project_number": "46958746522",
-    "name": "Utility for SMITE"
+    "project_id": "smite-companion",
+    "project_number": "180641156590",
+    "name": "Smite Companion"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:46958746522:android:9ff1e43e41faf62b",
+        "mobilesdk_app_id": "1:180641156590:android:9ff1e43e41faf62b",
         "client_id": "android:edu.gvsu.cis.eldridjo.smiteplayerlookup",
         "client_type": 1,
         "android_client_info": {
@@ -17,11 +17,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "46958746522-7b6d8hkcgchbgan8nn99gkirlkvkppse.apps.googleusercontent.com",
+          "client_id": "180641156590-0aml8iodgt4bkdkq04p0c16crebstblu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "edu.gvsu.cis.eldridjo.smiteplayerlookup",
-            "certificate_hash": "75BD3FDD4C58EAE2E4072E5D3C3D526A9F31D41B"
+            "certificate_hash": "8E6CBFC4BD4ABE6C67D26392535224D5A912B146"
           }
         }
       ],
