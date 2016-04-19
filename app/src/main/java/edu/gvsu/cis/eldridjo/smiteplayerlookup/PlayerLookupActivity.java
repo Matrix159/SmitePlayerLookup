@@ -130,7 +130,7 @@ public class PlayerLookupActivity extends AppCompatActivity{
                 if(list.get(0).getTeam_Name()!= "") {
                     clanName.setText(list.get(0).getTeam_Name());
                 }else{
-                    clanName.setVisibility(View.INVISIBLE);
+                    clanName.setVisibility(View.GONE);
                 }
 
                 createdText.setText("Created at: " + list.get(0).getCreated_Datetime());
