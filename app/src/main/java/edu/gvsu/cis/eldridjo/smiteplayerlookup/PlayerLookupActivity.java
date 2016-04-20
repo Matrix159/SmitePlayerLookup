@@ -154,9 +154,9 @@ public class PlayerLookupActivity extends AppCompatActivity{
         AHBottomNavigation bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
 
         // Create items
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.notification_background, R.color.colorPrimary);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.notification_background, R.color.colorAccent);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.notification_background, R.color.colorPrimaryDark);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.tab_0, R.drawable.conquesticon, R.color.colorPrimary);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.tab_1, R.drawable.jousticon, R.color.colorAccent);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.tab_2, R.drawable.duelicon, R.color.colorPrimaryDark);
 
         TextView rankedText = (TextView) findViewById(R.id.ranked_conquest_text);
         int tier = list.get(0).getRankedConquest().getTier();
