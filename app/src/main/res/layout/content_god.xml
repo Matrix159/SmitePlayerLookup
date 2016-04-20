@@ -72,7 +72,21 @@
         android:onClick="startWiki"
         android:textColor="@color/text_color"
         android:background="@drawable/my_border" />
-</RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lore"
+            android:id="@+id/lore_button"
+            android:layout_below="@+id/god_icon"
+            android:layout_toRightOf="@+id/wiki_button"
+            android:layout_toEndOf="@+id/wiki_button"
+            android:background="@drawable/my_border"
+            android:textColor="@color/text_color"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_marginLeft="10dp"
+            android:onClick="showLore" />
+    </RelativeLayout>
 
 
 

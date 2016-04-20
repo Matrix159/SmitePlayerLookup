@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -81,6 +82,7 @@ public class GodActivity extends AppCompatActivity {
         statsText.append("Pros: " + godList.get(position).getPros() + "\n");
         statsText.append("Cons: " + godList.get(position).getCons() + "\n");
         statsText.append("Movement Speed: " + godList.get(position).getSpeed() + "\n");
+        statsText.append("More will be added soon");
         abilityPassiveText = (TextView) findViewById(R.id.passive_text);
         System.out.println(position);
         for(Menuitem m: godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
@@ -281,6 +283,24 @@ public class GodActivity extends AppCompatActivity {
         i.addCategory(Intent.CATEGORY_BROWSABLE);
         i.setData(Uri.parse("http://smite.gamepedia.com/" + currentGod.getName()));
         startActivity(i);
+    }
+
+    public void showLore(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.lore_theme);
+
+// set title
+        builder.setTitle("Lore");
+
+// set dialog message
+        String message =currentGod.getLore().replaceAll("\\\\n", "\n");
+        builder.setMessage(message).setCancelable(true);
+
+// create alert dialog
+        AlertDialog alertDialog = builder.create();
+
+// show it
+        alertDialog.show();
     }
 
     public void hide(View v)

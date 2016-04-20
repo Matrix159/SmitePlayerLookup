@@ -20,5 +20,5 @@
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="lore_theme" parent="@android:style/Theme.Holo.NoActionBar"/>
 </resources>
