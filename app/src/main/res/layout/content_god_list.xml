@@ -52,14 +52,14 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@id/god_list_progress_bar"
+            android:id="@+id/god_grid_progress_bar"
             android:indeterminate="true"
             android:layout_centerInParent="true" />
         <TextView
-            android:id="@id/god_list_progress_text"
+            android:id="@+id/god_grid_progress_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/god_list_progress_bar"
+            android:layout_below="@id/god_grid_progress_bar"
             android:text="@string/downloading"
             android:textColor="@color/text_color"
             android:layout_centerHorizontal="true" />
