@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Smitetastic</string>
+    <string name="app_name">Mythical Vault</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_player_lookup">Player Information</string>
     <string name="title_activity_god_list">Gods</string>
