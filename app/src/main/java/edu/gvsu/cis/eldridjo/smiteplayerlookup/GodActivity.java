@@ -3,10 +3,16 @@ package edu.gvsu.cis.eldridjo.smiteplayerlookup;
 import android.animation.Animator;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -78,11 +84,93 @@ public class GodActivity extends AppCompatActivity {
         ability4HeaderText = (TextView) findViewById(R.id.ability4_header_text);
         ability4HeaderText.append(godList.get(position).getAbility4());
 
+        String bold = "Pros: ";
+        SpannableString span = new SpannableString(bold + godList.get(position).getPros() + "\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0, bold.length(), 0);
         statsText = (TextView) findViewById(R.id.stats_text);
-        statsText.append("Pros: " + godList.get(position).getPros() + "\n");
-        statsText.append("Cons: " + godList.get(position).getCons() + "\n");
-        statsText.append("Movement Speed: " + godList.get(position).getSpeed() + "\n");
-        statsText.append("More will be added soon");
+        statsText.append(span);
+        bold = "Cons: ";
+        span = new SpannableString(bold + godList.get(position).getCons() + "\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "Movement Speed: ";
+        span = new SpannableString(bold + godList.get(position).getSpeed() + "\n\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "Health: ";
+        span = new SpannableString(bold + godList.get(position).getHealth() +" (+" + godList.get(position).getHealthPerLevel() + " per level)\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "Mana: ";
+        span = new SpannableString(bold + godList.get(position).getMana() +" (+" + godList.get(position).getManaPerLevel() + " per level)\n\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "HP5: ";
+        span = new SpannableString(bold + godList.get(position).getHealthPerFive() +" (+" + godList.get(position).getHP5PerLevel() + " per level)\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "MP5: ";
+        span = new SpannableString(bold + godList.get(position).getManaPerFive() +" (+" + godList.get(position).getMP5PerLevel() + " per level)\n\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "Physical Protection: ";
+        span = new SpannableString(bold + godList.get(position).getPhysicalProtection() +" (+" + godList.get(position).getPhysicalProtectionPerLevel() + " per level)\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        bold = "Magical Protection: ";
+        span = new SpannableString(bold + godList.get(position).getMagicProtection() +" (+" + godList.get(position).getMagicProtectionPerLevel() + " per level)\n\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        statsText.append(span);
+        if(godList.get(position).getType().contains("Physical"))
+        {
+            bold = "Physical Power: ";
+            span = new SpannableString(bold + godList.get(position).getPhysicalPower() +" (+" + godList.get(position).getPhysicalPowerPerLevel() + " per level)\n\n");
+            span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+            statsText.append(span);
+        }
+        else
+        {
+            bold = "Magical Power: ";
+            span = new SpannableString(bold + godList.get(position).getMagicalPower() +" (+" + godList.get(position).getMagicalPowerPerLevel() + " per level)\n\n");
+            span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+
+            statsText.append(span);
+        }
+        bold = "Basic Attacks:\n";
+        span = new SpannableString(bold);
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+        span.setSpan(new UnderlineSpan(), 0 ,bold.length(), 0);
+        statsText.append(span);
+        if(godList.get(position).getBasicAttack().getItemDescription().getMenuitems() != null)
+        {
+            for (Menuitem m : godList.get(position).getBasicAttack().getItemDescription().getMenuitems())
+            {
+                String bold2 = m.getDescription();
+                SpannableString span2 = new SpannableString(bold2);
+                span2.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold2.length(), 0);
+                statsText.append(span2);
+                statsText.append(" " + m.getValue() + "\n");
+            }
+        }
+        if(godList.get(position).getBasicAttack().getItemDescription().getRankitems() != null)
+        {
+            for (Rankitem r : godList.get(position).getBasicAttack().getItemDescription().getRankitems())
+            {
+                String bold2 = r.getDescription();
+                SpannableString span2 = new SpannableString(bold2);
+                span2.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold2.length(), 0);
+                statsText.append(span2);
+                statsText.append(" " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "\n");
+            }
+        }
+        bold = "Attack Speed: ";
+        span = new SpannableString(bold + godList.get(position).getAttackSpeed() +" (+" + godList.get(position).getAttackSpeedPerLevel()+ " per level)\n");
+        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+
+        statsText.append(span);
+
+
+
         abilityPassiveText = (TextView) findViewById(R.id.passive_text);
         System.out.println(position);
         if(godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems() != null)
@@ -178,15 +266,6 @@ public class GodActivity extends AppCompatActivity {
                 .into(godImage);
 
 
-        String statsURI = "@drawable/placeholder";  // where myresource (without the extension) is the file
-        int statsIcon= getResources().getIdentifier(statsURI, null, getPackageName());
-        if(statsIcon == 0)
-        {
-            statsIcon = getResources().getIdentifier(placeholderURI, null, getPackageName());
-        }
-        Picasso.with(this).load(statsIcon)
-                .error(R.drawable.placeholder)
-                .into(statsImage);
 
         String godAbility1URI = "@drawable/i" + currentGod.getAbilityId1();  // where myresource (without the extension) is the file
         int godAbility1Icon= getResources().getIdentifier(godAbility1URI, null, getPackageName());

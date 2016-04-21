@@ -9,6 +9,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text=""
         android:id="@+id/ranked_joust_text"
-        android:textColor="#ffffff" />
+        android:textColor="@color/text_color" />
 
 </LinearLayout>

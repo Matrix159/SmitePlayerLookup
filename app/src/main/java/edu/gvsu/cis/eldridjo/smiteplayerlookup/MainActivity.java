@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
     private EditText editPlayerName;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_INVITE = 0;
-    private static SmiteMaster smiteMaster;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

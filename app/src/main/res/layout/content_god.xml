@@ -102,7 +102,9 @@
         <ImageView
             android:layout_width="62dp"
             android:layout_height="62dp"
-            android:id="@+id/stats_image" />
+            android:id="@+id/stats_image"
+            android:src="@drawable/stats_image"
+            android:background="@drawable/my_border"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -131,7 +133,8 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/stats_image"
             android:layout_toEndOf="@+id/stats_image"
-            android:textColor="@color/text_color" />
+            android:textColor="@color/text_color"
+            />
 
     </RelativeLayout>
 

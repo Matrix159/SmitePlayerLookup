@@ -234,7 +234,6 @@ public class GodListActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
-            findViewById(R.id.loadingPanelGods).setVisibility(View.GONE);
             mAdapter.notifyDataSetChanged();
 
         }
