@@ -85,13 +85,19 @@ public class GodActivity extends AppCompatActivity {
         statsText.append("More will be added soon");
         abilityPassiveText = (TextView) findViewById(R.id.passive_text);
         System.out.println(position);
-        for(Menuitem m: godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
+        if(godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems() != null)
         {
-            abilityPassiveText.append(m.getDescription() + " " + m.getValue() + "\n");
+            for (Menuitem m : godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
+            {
+                    abilityPassiveText.append(m.getDescription() + " " + m.getValue() + "\n");
+            }
         }
-        for(Rankitem r: godList.get(position).getAbilityDescription5().getItemDescription().getRankitems())
+        if(godList.get(position).getAbilityDescription5().getItemDescription().getRankitems() != null)
         {
-            abilityPassiveText.append("\n" + r.getDescription() + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "")+ "\n");
+            for (Rankitem r : godList.get(position).getAbilityDescription5().getItemDescription().getRankitems())
+            {
+                abilityPassiveText.append("\n" + r.getDescription() + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "\n");
+            }
         }
         abilityPassiveText.append("\n" + godList.get(position).getAbilityDescription5().getItemDescription().getDescription() + "\n");
 

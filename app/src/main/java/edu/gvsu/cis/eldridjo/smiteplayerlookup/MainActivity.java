@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         //String of colors for the boom menu.
         // TODO: Add more that fit the pallet for each additional button We need
         Colors = new String[]{
-                "#b89500",  //Darker Golden color
-                "#ffce00",  //Yellow
+                "#cc0b00",  //Darker Golden color
+                "#cc0b00",  //Yellow
                 "#16C3D9",    //Cyan Kind of color
                 "#0D5B80"  //Slightly dark blue
 
@@ -102,17 +102,17 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         super.onWindowFocusChanged(hasFocus);
 
         //Array of strings for the boom button
-        String[] boomStrings = new String[]{"Gods", "Items", "Placeholder"};
+        String[] boomStrings = new String[]{"Gods", "Items"};
 
         //2D array of ints for the colors
-        int[][] intColors = new int[3][2];
-        for(int i = 0; i< 3; i++){
+        int[][] intColors = new int[2][2];
+        for(int i = 0; i< 2; i++){
             intColors[i][1] = GetColor(i);
             intColors[i][0] = Util.getInstance().getPressedColor(intColors[i][1]);
         }
 
         //Empty right now until we decide if we want pictures or not
-        Drawable[] boomDrawables = new Drawable[3];
+        Drawable[] boomDrawables = new Drawable[2];
 
         boomButtonActionBar.setDuration(200);
         boomButtonActionBar.init(
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
                 intColors,    // The colors of sub buttons, including pressed-state and normal-state.
                 ButtonType.HAM,     // The button type.
                 BoomType.PARABOLA,  // The boom type.
-                PlaceType.HAM_3_1,  // The place type.
+                PlaceType.HAM_2_1,  // The place type.
                 null,               // Ease type to move the sub buttons when showing.
                 null,               // Ease type to scale the sub buttons when showing.
                 null,               // Ease type to rotate the sub buttons when showing.
