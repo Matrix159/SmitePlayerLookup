@@ -15,7 +15,16 @@
           "certificate_hash": []
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "903777427867-74m9tp34nio9hmk8alss72j3kk8pj1mv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gvsu.cis.eldridjo.smiteplayerlookup",
+            "certificate_hash": "75BD3FDD4C58EAE2E4072E5D3C3D526A9F31D41B"
+          }
+        }
+      ],
       "api_key": [],
       "services": {
         "analytics_service": {
@@ -26,7 +35,7 @@
           "apns_config": []
         },
         "appinvite_service": {
-          "status": 1,
+          "status": 2,
           "other_platform_oauth_client": []
         },
         "google_signin_service": {
