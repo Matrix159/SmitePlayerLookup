@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
             Intent intent = new Intent(this, GodListActivity.class);
             this.startActivity(intent);
         }
+        if(buttonIndex == 1)
+        {
+            Intent intent = new Intent(this, ItemListActivity.class);
+            this.startActivity(intent);
+        }
     }
 
 

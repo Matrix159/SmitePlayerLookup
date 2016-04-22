@@ -118,6 +118,7 @@ public class SmiteMaster  {
 
     public List<ItemInfo> getItems(int languageCode)
     {
+        System.out.println("http://api.smitegame.com/smiteapi.svc/getitemsJson/" + DEV_ID+"/" + createSignature("getitems")+"/" + sessionId+"/" + timestamp+"/" + 1);
         return service.getItems(DEV_ID, createSignature("getitems"), sessionId, timestamp, languageCode);
     }
 

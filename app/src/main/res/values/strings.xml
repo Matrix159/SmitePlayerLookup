@@ -12,4 +12,6 @@
     <string name="send_failed">send failed</string>
     <string name="options">Options</string>
     <string name="downloading">Downloading God Images</string>
+    <string name="title_activity_item_list">Items</string>
+    <string name="title_activity_item">Item</string>
 </resources>

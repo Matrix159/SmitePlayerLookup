@@ -15,8 +15,8 @@ public class ItemInfo {
     private String ShortDesc;
     private boolean StartingItem;
     private String Type;
-    private String itemIconURL;
-    private String retMsg;
+    private String itemIcon_URL;
+    private String ret_msg;
 
     /**
      * No args constructor for use in serialization
@@ -34,14 +34,14 @@ public class ItemInfo {
      * @param RootItemId
      * @param ShortDesc
      * @param StartingItem
-     * @param retMsg
+     * @param ret_msg
      * @param Price
-     * @param itemIconURL
+     * @param itemIcon_URL
      * @param ItemTier
      * @param ChildItemId
      * @param ItemDescription
      */
-    public ItemInfo(int ChildItemId, String DeviceName, int IconId, edu.gvsu.cis.eldridjo.smitedataretrieval.iteminfo.ItemDescription ItemDescription, int ItemId, int ItemTier, int Price, int RootItemId, String ShortDesc, boolean StartingItem, String Type, String itemIconURL, String retMsg) {
+    public ItemInfo(int ChildItemId, String DeviceName, int IconId, edu.gvsu.cis.eldridjo.smitedataretrieval.iteminfo.ItemDescription ItemDescription, int ItemId, int ItemTier, int Price, int RootItemId, String ShortDesc, boolean StartingItem, String Type, String itemIcon_URL, String ret_msg) {
         this.ChildItemId = ChildItemId;
         this.DeviceName = DeviceName;
         this.IconId = IconId;
@@ -53,8 +53,8 @@ public class ItemInfo {
         this.ShortDesc = ShortDesc;
         this.StartingItem = StartingItem;
         this.Type = Type;
-        this.itemIconURL = itemIconURL;
-        this.retMsg = retMsg;
+        this.itemIcon_URL = itemIcon_URL;
+        this.ret_msg = ret_msg;
     }
 
     /**
@@ -258,37 +258,37 @@ public class ItemInfo {
     /**
      * 
      * @return
-     *     The itemIconURL
+     *     The itemIcon_URL
      */
-    public String getItemIconURL() {
-        return itemIconURL;
+    public String getItemIcon_URL() {
+        return itemIcon_URL;
     }
 
     /**
      * 
-     * @param itemIconURL
+     * @param itemIcon_URL
      *     The itemIcon_URL
      */
-    public void setItemIconURL(String itemIconURL) {
-        this.itemIconURL = itemIconURL;
+    public void setItemIcon_URL(String itemIcon_URL) {
+        this.itemIcon_URL = itemIcon_URL;
     }
 
     /**
      * 
      * @return
-     *     The retMsg
+     *     The ret_msg
      */
-    public String getRetMsg() {
-        return retMsg;
+    public String getRet_msg() {
+        return ret_msg;
     }
 
     /**
      * 
-     * @param retMsg
+     * @param ret_msg
      *     The ret_msg
      */
-    public void setRetMsg(String retMsg) {
-        this.retMsg = retMsg;
+    public void setRet_msg(String ret_msg) {
+        this.ret_msg = ret_msg;
     }
 
 }

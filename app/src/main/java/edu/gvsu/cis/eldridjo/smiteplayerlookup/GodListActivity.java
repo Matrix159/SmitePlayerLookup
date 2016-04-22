@@ -4,20 +4,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +21,9 @@ import edu.gvsu.cis.eldridjo.smitedataretrieval.godinfo.GodInfo;
 
 public class GodListActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView godListRecyclerView;
+    private RecyclerView.Adapter godListAdapter;
+    private RecyclerView.LayoutManager godListLayoutManager;
     private SmiteMaster master;
     protected static List<GodInfo> godList;
     private ArrayList<Bitmap> godBitmaps;
@@ -41,22 +36,22 @@ public class GodListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_god_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         thisActivity = this;
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        godListRecyclerView = (RecyclerView) findViewById(R.id.god_list_recycler_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
+        godListRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        godListLayoutManager = new LinearLayoutManager(this);
+        godListRecyclerView.setLayoutManager(godListLayoutManager);
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
-        mAdapter = new GodListAdapter(godList, godBitmaps, this);
-        mRecyclerView.setAdapter(mAdapter);
+        godListAdapter = new GodListAdapter(godList, godBitmaps);
+        godListRecyclerView.setAdapter(godListAdapter);
         new AsynchCaller().execute();
     }
 
@@ -91,7 +86,7 @@ public class GodListActivity extends AppCompatActivity {
                 Bitmap mIcon;
                 InputStream in = null;
 
-                String godURI = "@drawable/i" + x.getId();  // where myresource (without the extension) is the file
+                String godURI = "@drawable/g" + x.getId();  // where myresource (without the extension) is the file
                 int godIcon = getResources().getIdentifier(godURI, null, getPackageName());
                 godBitmaps.add(BitmapFactory.decodeResource(thisActivity.getResources(), godIcon));
 
@@ -234,14 +229,14 @@ public class GodListActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
-            mAdapter.notifyDataSetChanged();
+            godListAdapter.notifyDataSetChanged();
 
         }
     }
 
     public void startGodActivity(View v) {
         Intent intent = new Intent(this, GodActivity.class);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.god_list_recycler_view);
         int position = recyclerView.getChildAdapterPosition(v);
         intent.putExtra("position", position);
         startActivity(intent);

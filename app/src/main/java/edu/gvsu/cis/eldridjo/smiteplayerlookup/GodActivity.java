@@ -145,28 +145,25 @@ public class GodActivity extends AppCompatActivity {
         {
             for (Menuitem m : godList.get(position).getBasicAttack().getItemDescription().getMenuitems())
             {
-                String bold2 = m.getDescription();
-                SpannableString span2 = new SpannableString(bold2);
-                span2.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold2.length(), 0);
-                statsText.append(span2);
-                statsText.append(" " + m.getValue() + "\n");
+                bold = m.getDescription();
+                span = new SpannableString(bold + " " + m.getValue() + "\n");
+                span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+                statsText.append(span);
             }
         }
         if(godList.get(position).getBasicAttack().getItemDescription().getRankitems() != null)
         {
             for (Rankitem r : godList.get(position).getBasicAttack().getItemDescription().getRankitems())
             {
-                String bold2 = r.getDescription();
-                SpannableString span2 = new SpannableString(bold2);
-                span2.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold2.length(), 0);
-                statsText.append(span2);
-                statsText.append(" " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "\n");
+                bold = r.getDescription();
+                span = new SpannableString(bold + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "\n");
+                span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
+                statsText.append(span);
             }
         }
         bold = "Attack Speed: ";
         span = new SpannableString(bold + godList.get(position).getAttackSpeed() +" (+" + godList.get(position).getAttackSpeedPerLevel()+ " per level)\n");
         span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-
         statsText.append(span);
 
 

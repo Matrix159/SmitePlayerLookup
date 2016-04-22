@@ -20,8 +20,6 @@ import edu.gvsu.cis.eldridjo.smitedataretrieval.godinfo.GodInfo;
 public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHolder> {
     private List<GodInfo> mDataset;
     private ArrayList<Bitmap> mBitmaps;
-    private static GodListActivity godListActivity;
-    private RecyclerView recyclerView;
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -43,10 +41,9 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public GodListAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps, GodListActivity x) {
+    public GodListAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps) {
         mDataset = list;
         mBitmaps = bitmaps;
-        godListActivity = x;
     }
 
     // Create new views (invoked by the layout manager)
@@ -78,31 +75,5 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
     public int getItemCount() {
         return mDataset.size();
     }
-
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
-    }
-
 
 }
