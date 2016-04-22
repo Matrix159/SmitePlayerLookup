@@ -48,7 +48,8 @@ public class GodListActivity extends AppCompatActivity {
         /*  TODO: Create Button that switches between layout and grid
             TODO: Make new variables for grid
             TODO: Make button clickable (if statements for which view) (change button pic?)
-
+*/
+        /*
         //List
         godListLayoutManager = new LinearLayoutManager(this);
         godListRecyclerView.setLayoutManager(godListLayoutManager);
@@ -60,7 +61,7 @@ public class GodListActivity extends AppCompatActivity {
         godListAdapter = new GodListAdapter(godList, godBitmaps);
         godListRecyclerView.setAdapter(godListAdapter);
         new AsynchCaller().execute();
-         */
+*/
 
         //Grid Layout
         godListLayoutManager = new GridLayoutManager(this,3);  //keep second parameter at 3
@@ -73,6 +74,8 @@ public class GodListActivity extends AppCompatActivity {
         godListAdapter = new GodListAdapter(godList, godBitmaps);
         godListRecyclerView.setAdapter(godListAdapter);
         new AsynchCaller().execute();
+
+
     }
 
 
