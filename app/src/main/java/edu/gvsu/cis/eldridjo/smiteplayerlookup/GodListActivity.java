@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -43,7 +44,26 @@ public class GodListActivity extends AppCompatActivity {
         godListRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
+
+        /*  TODO: Create Button that switches between layout and grid
+            TODO: Make new variables for grid
+            TODO: Make button clickable (if statements for which view) (change button pic?)
+
+        //List
         godListLayoutManager = new LinearLayoutManager(this);
+        godListRecyclerView.setLayoutManager(godListLayoutManager);
+        master = new SmiteMaster(this);
+        godList = new ArrayList<>();
+        godBitmaps = new ArrayList<>();
+        imageSaver = new ImageSaver(this);
+        // specify an adapter (see also next example)
+        godListAdapter = new GodListAdapter(godList, godBitmaps);
+        godListRecyclerView.setAdapter(godListAdapter);
+        new AsynchCaller().execute();
+         */
+
+        //Grid Layout
+        godListLayoutManager = new GridLayoutManager(this,3);  //keep second parameter at 3
         godListRecyclerView.setLayoutManager(godListLayoutManager);
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
