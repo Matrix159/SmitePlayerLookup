@@ -29,8 +29,10 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
         public TextView mTextView;
         public ViewHolder(View v) {
             super(v);
-            mImageView = (ImageView) v.findViewById(R.id.god_icon_list);
-            mTextView = (TextView) v.findViewById(R.id.god_name_list);
+            //mImageView = (ImageView) v.findViewById(R.id.god_icon_list);
+            //mTextView = (TextView) v.findViewById(R.id.god_name_list);
+            mImageView = (ImageView) v.findViewById(R.id.god_grid_image);
+            mTextView = (TextView) v.findViewById(R.id.god_grid_text);
         }
 
 
@@ -51,8 +53,10 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
     public GodListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                         int viewType) {
         // create a new view
+       // View view = LayoutInflater.from(parent.getContext())
+       //         .inflate(R.layout.god_view, parent, false);
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.god_view, parent, false);
+                .inflate(R.layout.god_grid_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(view);

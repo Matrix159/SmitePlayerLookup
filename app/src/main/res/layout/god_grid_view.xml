@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:id="@+id/god_grid_view"
+             android:onClick="startGodActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/placeholder"
+        android:id="@+id/god_grid_image"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:padding="5dp"
+        android:background="#AA000000"
+        android:textColor="@color/text_color"
+
+        android:text="Golden"
+        android:gravity="bottom|center_horizontal"
+        android:id="@+id/god_grid_text"
+        android:singleLine="true"
+        />
+
+</FrameLayout>
