@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -23,7 +22,7 @@ import edu.gvsu.cis.eldridjo.smitedataretrieval.godinfo.GodInfo;
 public class GodListActivity extends AppCompatActivity {
 
     private RecyclerView godListRecyclerView;
-    private RecyclerView.Adapter godListAdapter;
+    private RecyclerView.Adapter godListAdapter, godGridAdapter;
     private RecyclerView.LayoutManager godListLayoutManager;
     private SmiteMaster master;
     protected static List<GodInfo> godList;
@@ -72,8 +71,8 @@ public class GodListActivity extends AppCompatActivity {
         godBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
-        godListAdapter = new GodListAdapter(godList, godBitmaps);
-        godListRecyclerView.setAdapter(godListAdapter);
+        godGridAdapter = new GodGridAdapter(godList, godBitmaps);
+        godListRecyclerView.setAdapter(godGridAdapter);
         new AsynchCaller().execute();
 
 
@@ -253,7 +252,7 @@ public class GodListActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
-            godListAdapter.notifyDataSetChanged();
+            godGridAdapter.notifyDataSetChanged();
 
         }
     }

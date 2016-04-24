@@ -13,7 +13,7 @@ import java.util.List;
 
 import edu.gvsu.cis.eldridjo.smitedataretrieval.godinfo.GodInfo;
 
-public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHolder> {
+public class GodGridAdapter extends RecyclerView.Adapter<GodGridAdapter.ViewHolder> {
     private List<GodInfo> mDataset;
     private ArrayList<Bitmap> mBitmaps;
     // Provide a reference to the views for each data item
@@ -27,8 +27,8 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
             super(v);
             //mImageView = (ImageView) v.findViewById(R.id.god_icon_list);
             //mTextView = (TextView) v.findViewById(R.id.god_name_list);
-            mImageView = (ImageView) v.findViewById(R.id.god_list_image);
-            mTextView = (TextView) v.findViewById(R.id.god_list_text);
+            mImageView = (ImageView) v.findViewById(R.id.god_grid_image);
+            mTextView = (TextView) v.findViewById(R.id.god_grid_text);
         }
 
 
@@ -39,20 +39,20 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public GodListAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps) {
+    public GodGridAdapter(List<GodInfo> list, ArrayList<Bitmap> bitmaps) {
         mDataset = list;
         mBitmaps = bitmaps;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public GodListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public GodGridAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                         int viewType) {
         // create a new view
-       // View view = LayoutInflater.from(parent.getContext())
-       //         .inflate(R.layout.god_list_view, parent, false);
+        // View view = LayoutInflater.from(parent.getContext())
+        //         .inflate(R.layout.god_list_view, parent, false);
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.god_list_view, parent, false);
+                .inflate(R.layout.god_grid_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(view);
         return vh;

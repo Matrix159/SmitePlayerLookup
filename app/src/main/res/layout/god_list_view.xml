@@ -10,7 +10,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/god_icon_list">
+        android:id="@+id/god_list_image">
     </ImageView>
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_gravity="center_vertical"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/god_name_list"
+        android:id="@+id/god_list_text"
         android:textColor="@color/text_color"
          />
 </LinearLayout>
