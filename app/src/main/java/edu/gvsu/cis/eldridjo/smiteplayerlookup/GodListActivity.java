@@ -2,16 +2,21 @@ package edu.gvsu.cis.eldridjo.smiteplayerlookup;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,8 @@ public class GodListActivity extends AppCompatActivity {
     private ArrayList<Bitmap> godBitmaps;
     private ImageSaver imageSaver;
     private GodListActivity thisActivity;
+    private boolean isGrid;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,13 @@ public class GodListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         thisActivity = this;
         godListRecyclerView = (RecyclerView) findViewById(R.id.god_list_recycler_view);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if(prefs.contains("grid")){
+            isGrid = prefs.getBoolean("grid", true);
+        }else {
+            isGrid = true;
+        }
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -44,42 +58,23 @@ public class GodListActivity extends AppCompatActivity {
 
         // use a linear layout manager
 
-        /*  TODO: Create Button that switches between layout and grid
-            TODO: Make new variables for grid
-            TODO: Make button clickable (if statements for which view) (change button pic?)
-*/
-        /*
-        //List
-        godListLayoutManager = new LinearLayoutManager(this);
+            //TODO: Make button clickable (add onResume)
+
+        godListLayoutManager = (isGrid) ? new GridLayoutManager(this, 5): new LinearLayoutManager(this);
         godListRecyclerView.setLayoutManager(godListLayoutManager);
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
-        godListAdapter = new GodListAdapter(godList, godBitmaps);
-        godListRecyclerView.setAdapter(godListAdapter);
+        if(isGrid) {
+            godGridAdapter = new GodGridAdapter(godList, godBitmaps);
+        }else {
+            godListAdapter = new GodListAdapter(godList, godBitmaps);
+        }
+        godListRecyclerView.setAdapter((isGrid) ? godGridAdapter:godListAdapter);
         new AsynchCaller().execute();
-*/
-
-        //Grid Layout
-        godListLayoutManager = new GridLayoutManager(this,5);
-        //keep second parameter at 3
-        godListRecyclerView.setLayoutManager(godListLayoutManager);
-        master = new SmiteMaster(this);
-        godList = new ArrayList<>();
-        godBitmaps = new ArrayList<>();
-        imageSaver = new ImageSaver(this);
-        // specify an adapter (see also next example)
-        godGridAdapter = new GodGridAdapter(godList, godBitmaps);
-        godListRecyclerView.setAdapter(godGridAdapter);
-        new AsynchCaller().execute();
-
-
     }
-
-
-
 
 
     private class AsynchCaller extends AsyncTask<Void, Void, Void>
@@ -252,8 +247,10 @@ public class GodListActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
             }
-            godGridAdapter.notifyDataSetChanged();
-
+            if(isGrid)
+                godGridAdapter.notifyDataSetChanged();
+            else
+                godListAdapter.notifyDataSetChanged();
         }
     }
 
@@ -264,5 +261,58 @@ public class GodListActivity extends AppCompatActivity {
         intent.putExtra("position", position);
         startActivity(intent);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater m = getMenuInflater();
+        m.inflate(R.menu.god_menu, menu);
+
+        //Changes the menu item picture accordingly
+        MenuItem i = menu.getItem(0);
+        changeIcon(i);
+
+        return true;
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        SharedPreferences.Editor ped = prefs.edit();
+        ped.putBoolean("grid", isGrid);
+        ped.commit();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.list_button:
+                if(!isGrid) {
+                    item.setIcon(R.drawable.ic_grid);
+                    isGrid = true;
+                    recreate();
+                }else{
+                    item.setIcon(R.drawable.ic_list);
+                    isGrid = false;
+                    recreate();
+                }
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void changeIcon(MenuItem i){
+        if(isGrid){
+            i.setIcon(R.drawable.ic_grid);
+        }else{
+            i.setIcon(R.drawable.ic_list);
+        }
     }
 }

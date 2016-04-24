@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.gvsu.cis.eldridjo.smiteplayerlookup.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/list_button"
         android:orderInCategory="50"
         android:title="@string/options"
+        android:icon="@drawable/ic_grid"
+        android:visible="true"
         app:showAsAction="always" />
-
 
 </menu>
