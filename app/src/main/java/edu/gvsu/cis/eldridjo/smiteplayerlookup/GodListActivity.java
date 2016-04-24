@@ -26,9 +26,9 @@ import edu.gvsu.cis.eldridjo.smitedataretrieval.godinfo.GodInfo;
 
 public class GodListActivity extends AppCompatActivity {
 
-    private RecyclerView godListRecyclerView;
+    private RecyclerView godListRecyclerView, godGridRecyclerView;
     private RecyclerView.Adapter godListAdapter, godGridAdapter;
-    private RecyclerView.LayoutManager godListLayoutManager;
+    private RecyclerView.LayoutManager godListLayoutManager, godGridLayoutManager;
     private SmiteMaster master;
     protected static List<GodInfo> godList;
     private ArrayList<Bitmap> godBitmaps;
@@ -44,6 +44,7 @@ public class GodListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         thisActivity = this;
         godListRecyclerView = (RecyclerView) findViewById(R.id.god_list_recycler_view);
+        godGridRecyclerView = (RecyclerView) findViewById(R.id.god_grid_recycler_view);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         if(prefs.contains("grid")){
@@ -55,24 +56,40 @@ public class GodListActivity extends AppCompatActivity {
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         godListRecyclerView.setHasFixedSize(true);
+        godGridRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
 
             //TODO: Make button clickable (add onResume)
 
-        godListLayoutManager = (isGrid) ? new GridLayoutManager(this, 5): new LinearLayoutManager(this);
+        //godListLayoutManager = (isGrid) ? new GridLayoutManager(this, 5): new LinearLayoutManager(this);
+        godListLayoutManager = new LinearLayoutManager(this);
         godListRecyclerView.setLayoutManager(godListLayoutManager);
+        godGridLayoutManager = new GridLayoutManager(this, 5);
+        godGridRecyclerView.setLayoutManager(godGridLayoutManager);
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
         // specify an adapter (see also next example)
-        if(isGrid) {
+        //if(isGrid) {
             godGridAdapter = new GodGridAdapter(godList, godBitmaps);
-        }else {
+        //}else {
             godListAdapter = new GodListAdapter(godList, godBitmaps);
+        //}
+        //godListRecyclerView.setAdapter((isGrid) ? godGridAdapter:godListAdapter);
+        godListRecyclerView.setAdapter(godListAdapter);
+        godGridRecyclerView.setAdapter(godGridAdapter);
+        if(isGrid)
+        {
+            godGridRecyclerView.setVisibility(View.VISIBLE);
+            godListRecyclerView.setVisibility(View.GONE);
         }
-        godListRecyclerView.setAdapter((isGrid) ? godGridAdapter:godListAdapter);
+        else
+        {
+            godGridRecyclerView.setVisibility(View.GONE);
+            godListRecyclerView.setVisibility(View.VISIBLE);
+        }
         new AsynchCaller().execute();
     }
 
@@ -294,11 +311,13 @@ public class GodListActivity extends AppCompatActivity {
                 if(!isGrid) {
                     item.setIcon(R.drawable.ic_grid);
                     isGrid = true;
-                    recreate();
+                    godGridRecyclerView.setVisibility(View.VISIBLE);
+                    godListRecyclerView.setVisibility(View.GONE);
                 }else{
                     item.setIcon(R.drawable.ic_list);
                     isGrid = false;
-                    recreate();
+                    godListRecyclerView.setVisibility(View.VISIBLE);
+                    godGridRecyclerView.setVisibility(View.GONE);
                 }
                 return true;
 
