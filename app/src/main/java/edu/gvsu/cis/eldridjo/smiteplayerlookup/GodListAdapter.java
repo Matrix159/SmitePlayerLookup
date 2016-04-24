@@ -1,13 +1,18 @@
 package edu.gvsu.cis.eldridjo.smiteplayerlookup;
 
+import android.app.ActionBar;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,7 +63,6 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.god_grid_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
-
         ViewHolder vh = new ViewHolder(view);
         return vh;
     }

@@ -64,7 +64,8 @@ public class GodListActivity extends AppCompatActivity {
 */
 
         //Grid Layout
-        godListLayoutManager = new GridLayoutManager(this,3);  //keep second parameter at 3
+        godListLayoutManager = new GridLayoutManager(this,5);
+        //keep second parameter at 3
         godListRecyclerView.setLayoutManager(godListLayoutManager);
         master = new SmiteMaster(this);
         godList = new ArrayList<>();
