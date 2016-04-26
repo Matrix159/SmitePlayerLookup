@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/better_background"
     android:onClick="startGodActivity">
@@ -16,11 +15,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/god_list_text"
+        android:id="@+id/god_list_name"
         android:textColor="@color/text_color"
-         />
-</LinearLayout>
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/god_list_image"
+        android:layout_toEndOf="@+id/god_list_image"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/god_list_race"
+        android:layout_below="@+id/god_list_name"
+        android:layout_toRightOf="@+id/god_list_image"
+        android:layout_toEndOf="@+id/god_list_image"
+        android:textColor="@color/text_color"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/god_list_role"
+        android:layout_below="@+id/god_list_race"
+        android:layout_toRightOf="@+id/god_list_image"
+        android:layout_toEndOf="@+id/god_list_image"
+        android:textColor="@color/text_color"/>
+</RelativeLayout>
 

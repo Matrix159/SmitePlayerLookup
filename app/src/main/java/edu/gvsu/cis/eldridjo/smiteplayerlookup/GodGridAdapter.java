@@ -26,7 +26,7 @@ public class GodGridAdapter extends RecyclerView.Adapter<GodGridAdapter.ViewHold
         public ViewHolder(View v) {
             super(v);
             //mImageView = (ImageView) v.findViewById(R.id.god_icon_list);
-            //mTextView = (TextView) v.findViewById(R.id.god_name_list);
+            //god_list_name = (TextView) v.findViewById(R.id.god_name_list);
             mImageView = (ImageView) v.findViewById(R.id.god_grid_image);
             mTextView = (TextView) v.findViewById(R.id.god_grid_text);
         }

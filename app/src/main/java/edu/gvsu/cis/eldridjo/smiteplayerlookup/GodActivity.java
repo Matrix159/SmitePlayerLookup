@@ -84,87 +84,51 @@ public class GodActivity extends AppCompatActivity {
         ability4HeaderText = (TextView) findViewById(R.id.ability4_header_text);
         ability4HeaderText.append(godList.get(position).getAbility4());
 
-        String bold = "Pros: ";
-        SpannableString span = new SpannableString(bold + godList.get(position).getPros() + "\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0, bold.length(), 0);
+
         statsText = (TextView) findViewById(R.id.stats_text);
-        statsText.append(span);
-        bold = "Cons: ";
-        span = new SpannableString(bold + godList.get(position).getCons() + "\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "Movement Speed: ";
-        span = new SpannableString(bold + godList.get(position).getSpeed() + "\n\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "Health: ";
-        span = new SpannableString(bold + godList.get(position).getHealth() +" (+" + godList.get(position).getHealthPerLevel() + " per level)\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "Mana: ";
-        span = new SpannableString(bold + godList.get(position).getMana() +" (+" + godList.get(position).getManaPerLevel() + " per level)\n\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "HP5: ";
-        span = new SpannableString(bold + godList.get(position).getHealthPerFive() +" (+" + godList.get(position).getHP5PerLevel() + " per level)\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "MP5: ";
-        span = new SpannableString(bold + godList.get(position).getManaPerFive() +" (+" + godList.get(position).getMP5PerLevel() + " per level)\n\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "Physical Protection: ";
-        span = new SpannableString(bold + godList.get(position).getPhysicalProtection() +" (+" + godList.get(position).getPhysicalProtectionPerLevel() + " per level)\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
-        bold = "Magical Protection: ";
-        span = new SpannableString(bold + godList.get(position).getMagicProtection() +" (+" + godList.get(position).getMagicProtectionPerLevel() + " per level)\n\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
+        statsText.append(Html.fromHtml("<b>Pros: </b>" + godList.get(position).getPros() + "<br/>"));
+
+        statsText.append(Html.fromHtml("<b>Cons: </b>" + godList.get(position).getCons() + "<br/>"));
+
+        statsText.append(Html.fromHtml("<b>Movement Speed: </b>" + godList.get(position).getSpeed() + "<br/><br/>"));
+
+        statsText.append(Html.fromHtml("<b>Health: </b>" + godList.get(position).getHealth() +" (+" + godList.get(position).getHealthPerLevel() + " per level)<br/>"));
+
+        statsText.append(Html.fromHtml("<b>Mana: </b>" + godList.get(position).getMana() +" (+" + godList.get(position).getManaPerLevel() + " per level)<br/><br/>"));
+
+        statsText.append(Html.fromHtml("<b>HP5: </b>" + godList.get(position).getHealthPerFive() +" (+" + godList.get(position).getHP5PerLevel() + " per level)<br/>"));
+
+        statsText.append(Html.fromHtml("<b>MP5: </b>" + godList.get(position).getManaPerFive() +" (+" + godList.get(position).getMP5PerLevel() + " per level)<br/><br/>"));
+
+        statsText.append(Html.fromHtml("<b>Physical Protection: </b>" + godList.get(position).getPhysicalProtection() +" (+" + godList.get(position).getPhysicalProtectionPerLevel() + " per level)<br/>"));
+
+        statsText.append(Html.fromHtml("<b>Magical Protection: </b>" + godList.get(position).getMagicProtection() +" (+" + godList.get(position).getMagicProtectionPerLevel() + " per level)<br/><br/>"));
         if(godList.get(position).getType().contains("Physical"))
         {
-            bold = "Physical Power: ";
-            span = new SpannableString(bold + godList.get(position).getPhysicalPower() +" (+" + godList.get(position).getPhysicalPowerPerLevel() + " per level)\n\n");
-            span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-            statsText.append(span);
+            statsText.append(Html.fromHtml("<b>Physical Power: </b>" + godList.get(position).getPhysicalPower() +" (+" + godList.get(position).getPhysicalPowerPerLevel() + " per level)<br/><br/>"));
         }
         else
         {
-            bold = "Magical Power: ";
-            span = new SpannableString(bold + godList.get(position).getMagicalPower() +" (+" + godList.get(position).getMagicalPowerPerLevel() + " per level)\n\n");
-            span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
 
-            statsText.append(span);
+            statsText.append(Html.fromHtml("<b>Magical Power: </b>" + godList.get(position).getMagicalPower() +" (+" + godList.get(position).getMagicalPowerPerLevel() + " per level)<br/><br/>"));
         }
-        bold = "Basic Attacks:\n";
-        span = new SpannableString(bold);
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        span.setSpan(new UnderlineSpan(), 0 ,bold.length(), 0);
-        statsText.append(span);
+        statsText.append(Html.fromHtml("<b><u><i>Basic Attacks: </i></u></b><br/>"));
         if(godList.get(position).getBasicAttack().getItemDescription().getMenuitems() != null)
         {
             for (Menuitem m : godList.get(position).getBasicAttack().getItemDescription().getMenuitems())
             {
-                bold = m.getDescription();
-                span = new SpannableString(bold + " " + m.getValue() + "\n");
-                span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-                statsText.append(span);
+                statsText.append(Html.fromHtml("<b>" + m.getDescription() + "</b>" + " " + m.getValue() + "<br/>"));
             }
         }
         if(godList.get(position).getBasicAttack().getItemDescription().getRankitems() != null)
         {
             for (Rankitem r : godList.get(position).getBasicAttack().getItemDescription().getRankitems())
             {
-                bold = r.getDescription();
-                span = new SpannableString(bold + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "\n");
-                span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-                statsText.append(span);
+                statsText.append(Html.fromHtml("<b>" + r.getDescription() + "</b>" + " " +  r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "<br/>"));
             }
         }
-        bold = "Attack Speed: ";
-        span = new SpannableString(bold + godList.get(position).getAttackSpeed() +" (+" + godList.get(position).getAttackSpeedPerLevel()+ " per level)\n");
-        span.setSpan(new StyleSpan(Typeface.BOLD), 0 ,bold.length(), 0);
-        statsText.append(span);
+
+        statsText.append(Html.fromHtml("<b>Attack Speed: </b>" + godList.get(position).getAttackSpeed() +" (+" + godList.get(position).getAttackSpeedPerLevel()+ " per level)"));
 
 
 
@@ -174,14 +138,14 @@ public class GodActivity extends AppCompatActivity {
         {
             for (Menuitem m : godList.get(position).getAbilityDescription5().getItemDescription().getMenuitems())
             {
-                    abilityPassiveText.append(m.getDescription() + " " + m.getValue() + "\n");
+                    abilityPassiveText.append(Html.fromHtml("<b>" + m.getDescription() + "</b>" + " " + m.getValue() + "<br/>"));
             }
         }
         if(godList.get(position).getAbilityDescription5().getItemDescription().getRankitems() != null)
         {
             for (Rankitem r : godList.get(position).getAbilityDescription5().getItemDescription().getRankitems())
             {
-                abilityPassiveText.append("\n" + r.getDescription() + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "\n");
+                abilityPassiveText.append(Html.fromHtml("<br/>" + "<b>" + r.getDescription() + "</b>" + " " + r.getValue().replaceFirst("pexistspprop[^\\/]*\\/[0-9.]*\\/\\+#\\/", "") + "<br/>"));
             }
         }
         abilityPassiveText.append("\n" + godList.get(position).getAbilityDescription5().getItemDescription().getDescription() + "\n");

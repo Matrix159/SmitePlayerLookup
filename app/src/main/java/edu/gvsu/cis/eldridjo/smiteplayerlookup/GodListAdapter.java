@@ -1,6 +1,7 @@
 package edu.gvsu.cis.eldridjo.smiteplayerlookup;
 
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +23,16 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         // each data item is just a string in this case
         public ImageView mImageView;
-        public TextView mTextView;
+        public TextView god_list_name, god_list_race, god_list_role;
+
         public ViewHolder(View v) {
             super(v);
             //mImageView = (ImageView) v.findViewById(R.id.god_icon_list);
-            //mTextView = (TextView) v.findViewById(R.id.god_name_list);
+            //god_list_name = (TextView) v.findViewById(R.id.god_name_list);
             mImageView = (ImageView) v.findViewById(R.id.god_list_image);
-            mTextView = (TextView) v.findViewById(R.id.god_list_text);
+            god_list_name = (TextView) v.findViewById(R.id.god_list_name);
+            god_list_race = (TextView) v.findViewById(R.id.god_list_race);
+            god_list_role = (TextView) v.findViewById(R.id.god_list_role);
         }
 
 
@@ -64,7 +68,10 @@ public class GodListAdapter extends RecyclerView.Adapter<GodListAdapter.ViewHold
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mImageView.setImageBitmap(mBitmaps.get(position));
-        holder.mTextView.setText(mDataset.get(position).getName());
+        holder.god_list_name.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
+        holder.god_list_name.setText(" " + mDataset.get(position).getName());
+        holder.god_list_race.setText(" " + mDataset.get(position).getPantheon() + ": " + mDataset.get(position).getTitle());
+        holder.god_list_role.setText(mDataset.get(position).getRoles() + " (" + mDataset.get(position).getType() + " )");
         System.out.println(mDataset.get(position).getName());
 
     }

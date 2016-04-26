@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:padding="3dp"
         android:background="#AA000000"
         android:textColor="@color/text_color"
 
