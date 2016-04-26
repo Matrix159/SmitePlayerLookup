@@ -8,10 +8,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -60,6 +62,16 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         mActionBar.setDisplayShowCustomEnabled(true);
         ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0, 0);
         editPlayerName = (EditText) findViewById(R.id.edit_name);
+        editPlayerName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    lookupPlayer(v);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
