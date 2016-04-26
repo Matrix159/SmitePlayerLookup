@@ -32,30 +32,84 @@ public class SmiteMaster  {
 
     private static final String DEV_ID = "1621";
     private static final String AUTH_KEY = "C7674733395A4668B6A6E983865A9EDB";
+    public static final int PC = 1, XBOX = 2, PS4 = 3;
     private String timestamp;
     Firebase myRef;
     String sessionId = null;
     SmiteApi service;
-    public SmiteMaster(android.content.Context context)
+    public SmiteMaster(android.content.Context context, int type)
     {
         Firebase.setAndroidContext(context);
 
-        myRef = new Firebase("https://matrixprogramming.firebaseio.com/sessioninfo/");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                sessionId = dataSnapshot.child("session_id").getValue().toString();
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("Firebase Error.");
-            }
-        });
-        timestamp =  newTimeStamp();
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://api.smitegame.com/smiteapi.svc")
-                .build();
-        service = restAdapter.create(SmiteApi.class);
+        if(type == PC)
+        {
+            myRef = new Firebase("https://matrixprogramming.firebaseio.com/sessioninfoPC/");
+            myRef.addValueEventListener(new ValueEventListener()
+            {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    sessionId = dataSnapshot.child("session_id").getValue().toString();
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError)
+                {
+                    System.out.println("Firebase Error.");
+                }
+            });
+            timestamp = newTimeStamp();
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setEndpoint("http://api.smitegame.com/smiteapi.svc")
+                    .build();
+            service = restAdapter.create(SmiteApi.class);
+        }
+        if(type == XBOX)
+        {
+            myRef = new Firebase("https://matrixprogramming.firebaseio.com/sessioninfoXBOX/");
+            myRef.addValueEventListener(new ValueEventListener()
+            {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    sessionId = dataSnapshot.child("session_id").getValue().toString();
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError)
+                {
+                    System.out.println("Firebase Error.");
+                }
+            });
+            timestamp = newTimeStamp();
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setEndpoint("http://api.xbox.smitegame.com/smiteapi.svc")
+                    .build();
+            service = restAdapter.create(SmiteApi.class);
+        }
+        if(type == PS4)
+        {
+            myRef = new Firebase("https://matrixprogramming.firebaseio.com/sessioninfoPS4/");
+            myRef.addValueEventListener(new ValueEventListener()
+            {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    sessionId = dataSnapshot.child("session_id").getValue().toString();
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError)
+                {
+                    System.out.println("Firebase Error.");
+                }
+            });
+            timestamp = newTimeStamp();
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setEndpoint("http://api.ps4.smitegame.com/smiteapi.svc")
+                    .build();
+            service = restAdapter.create(SmiteApi.class);
+        }
 
     }
     public SmiteMaster()
@@ -135,6 +189,7 @@ public class SmiteMaster  {
     public List<PlayerInfo> getPlayer(String player)
     {
         System.out.println("http://api.smitegame.com/smiteapi.svc/getplayerJson/" + DEV_ID+"/" + createSignature("getplayer")+"/" + sessionId+"/" + timestamp+"/" + player);
+        System.out.println("http://api.xbox.smitegame.com/smiteapi.svc/getplayerJson/" + DEV_ID+"/" + createSignature("getplayer")+"/" + sessionId+"/" + timestamp+"/" + player);
         return service.getPlayer(DEV_ID, createSignature("getplayer"), sessionId, timestamp, player);
     }
 

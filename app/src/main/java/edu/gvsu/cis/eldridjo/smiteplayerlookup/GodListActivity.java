@@ -67,7 +67,7 @@ public class GodListActivity extends AppCompatActivity {
         godListRecyclerView.setLayoutManager(godListLayoutManager);
         godGridLayoutManager = new GridLayoutManager(this, 5);
         godGridRecyclerView.setLayoutManager(godGridLayoutManager);
-        master = new SmiteMaster(this);
+        master = new SmiteMaster(this, SmiteMaster.PC);
         godList = new ArrayList<>();
         godBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);

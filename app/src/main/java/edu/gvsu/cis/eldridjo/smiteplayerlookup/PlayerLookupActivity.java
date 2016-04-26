@@ -39,10 +39,10 @@ public class PlayerLookupActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_lookup);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        master = new SmiteMaster(this);
-        thisRef = this;
         Intent intent = this.getIntent();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        master = new SmiteMaster(this, intent.getIntExtra("platformType", 1));
+        thisRef = this;
         name = intent.getStringExtra("playerName");
         new AsynchCaller().execute();
         if(findViewById(R.id.fragmentHolder) != null){

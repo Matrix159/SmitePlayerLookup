@@ -18,26 +18,19 @@
     android:background="@drawable/better_background">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_name"
-        android:layout_marginTop="69dp"
-        android:hint="Enter player name"
-        android:textColorHint="#ffffff"
+        android:id="@+id/edit_name_pc"
+        android:hint="Search PC Name"
+        android:textColorHint="@color/text_color"
         android:inputType="text"
         android:imeOptions="actionSearch"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/my_border"
-        android:textColor="@color/text_color" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/search_button"
-        android:layout_below="@+id/edit_name"
-        android:layout_centerHorizontal="true"
-        android:onClick="lookupPlayer" />
+        android:textColor="@color/text_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
 
     <RelativeLayout
         android:id="@+id/main_loading_panel"
@@ -57,10 +50,41 @@
         android:layout_height="wrap_content"
         android:text="Invite Friends"
         android:id="@+id/invite_button"
-        android:layout_below="@+id/search_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:onClick="onInviteClicked" />
+        android:layout_marginTop="54dp"
+        android:onClick="onInviteClicked"
+        android:layout_below="@+id/edit_name_ps4"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_name_xbox"
+        android:textColorHint="@color/text_color"
+        android:textColor="@color/text_color"
+        android:hint="Search Xbox Name"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:background="@drawable/my_border"
+        android:layout_below="@+id/edit_name_pc"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_name_ps4"
+        android:hint="Search PS4 Name"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/text_color"
+        android:background="@drawable/my_border"
+        android:layout_below="@+id/edit_name_xbox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        />
 
 </RelativeLayout>
 </ScrollView>

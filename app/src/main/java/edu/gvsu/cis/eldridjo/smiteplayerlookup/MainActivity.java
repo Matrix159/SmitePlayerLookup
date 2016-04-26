@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
     private BoomMenuButton boomButtonActionBar;
     private String[] Colors;
-    private EditText editPlayerName;
+    private EditText editPCName, editXBOXName, editPS4Name;
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_INVITE = 0;
     @Override
@@ -61,8 +61,30 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
         ((Toolbar) mCustomView.getParent()).setContentInsetsAbsolute(0, 0);
-        editPlayerName = (EditText) findViewById(R.id.edit_name);
-        editPlayerName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        editPCName = (EditText) findViewById(R.id.edit_name_pc);
+        editPCName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    lookupPlayer(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editXBOXName = (EditText) findViewById(R.id.edit_name_xbox);
+        editXBOXName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    lookupPlayer(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editPS4Name = (EditText) findViewById(R.id.edit_name_ps4);
+        editPS4Name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -150,11 +172,34 @@ public class MainActivity extends AppCompatActivity implements BoomMenuButton.On
 
     public void lookupPlayer(View v)
     {
-        Intent intent = new Intent(this,  PlayerLookupActivity.class);
-        if(editPlayerName.getText().toString().isEmpty())
-            return;
-        intent.putExtra("playerName", editPlayerName.getText().toString());
-        this.startActivity(intent);
+        if(v.equals(editPCName))
+        {
+            Intent intent = new Intent(this, PlayerLookupActivity.class);
+            if (editPCName.getText().toString().isEmpty())
+                return;
+            intent.putExtra("playerName", editPCName.getText().toString());
+            intent.putExtra("platformType", SmiteMaster.PC);
+            this.startActivity(intent);
+        }
+        if(v.equals(editXBOXName))
+        {
+            Intent intent = new Intent(this, PlayerLookupActivity.class);
+            if (editXBOXName.getText().toString().isEmpty())
+                return;
+            intent.putExtra("playerName", editXBOXName.getText().toString());
+            intent.putExtra("platformType", SmiteMaster.XBOX);
+            this.startActivity(intent);
+        }
+        if(v.equals(editPS4Name))
+        {
+
+            Intent intent = new Intent(this, PlayerLookupActivity.class);
+            if (editPS4Name.getText().toString().isEmpty())
+                return;
+            intent.putExtra("playerName", editPS4Name.getText().toString());
+            intent.putExtra("platformType", SmiteMaster.PS4);
+            this.startActivity(intent);
+        }
 
     }
 

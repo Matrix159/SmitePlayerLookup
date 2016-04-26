@@ -45,7 +45,7 @@ public class ItemListActivity extends AppCompatActivity {
         // use a linear layout manager
         itemListLayoutManager = new LinearLayoutManager(this);
         itemListRecyclerView.setLayoutManager(itemListLayoutManager);
-        master = new SmiteMaster(this);
+        master = new SmiteMaster(this, SmiteMaster.PC);
         itemList = new ArrayList<>();
         itemBitmaps = new ArrayList<>();
         imageSaver = new ImageSaver(this);
